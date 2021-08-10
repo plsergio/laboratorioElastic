@@ -14,4 +14,4 @@
 
 ### Documentação de referência:
 - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-- https://www.elastic.co/guide/en/elastic-stack-get-started/7.9/get-started-docker.html
+- https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
