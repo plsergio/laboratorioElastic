@@ -18,7 +18,7 @@ services:
       - data01:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-    network_mode: "host"
+    network_mode: "bridge"
 
   es02:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
@@ -58,7 +58,7 @@ services:
       - data03:/usr/share/elasticsearch/data
     ports:
       - 9202:9202
-    network_mode: "host"
+    network_mode: "bridge"
 
   kib01:
     image: docker.elastic.co/kibana/kibana:7.14.0
@@ -68,7 +68,7 @@ services:
     environment:
       ELASTICSEARCH_URL: http://localhost:9200
       ELASTICSEARCH_HOSTS: http://localhost:9200
-    network_mode: "host"
+    network_mode: "bridge"
 
 volumes:
   data01:
