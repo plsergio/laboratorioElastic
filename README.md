@@ -1,10 +1,9 @@
 # Laboratorio Elastic
 
 ### Requisitos
-
-To apply the setting on a live system, run:
-
-sysctl -w vm.max_map_count=262144
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- Set vm.max_map_count to at least 262144:
+  - ` sysctl -w vm.max_map_count=262144 `
 
 ### Urls
 - master: http://localhost:9200/
