@@ -8,6 +8,8 @@
 ### Rode docker-compose para subir o cluster:
 - ` docker-compose up `
 
+### Submit a _cat/nodes request to see that the nodes are up and running:
+- ` curl -X GET "localhost:9200/_cat/nodes?v=true&pretty" `
 ### Urls
 - master: http://localhost:9200/
 - kibana: http://localhost:5601/
