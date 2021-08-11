@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-11T17:34:30.764Z
+__export_date: 2021-08-11T17:50:05.072Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -34,10 +34,10 @@ resources:
     _type: workspace
   - _id: req_1a53ee15503e4646af96616db9c696af
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628626233233
+    modified: 1628704166881
     created: 1628626230516
     url: http://localhost:9200/_cat
-    name: http://localhost:9200/_cat
+    name: listar comandos
     description: ""
     method: GET
     body: {}
@@ -53,19 +53,19 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
+  - _id: req_dee60a5773ab4012acd483aa3df548b0
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628626098235
-    created: 1628625975148
-    url: http://localhost:9200/_cat/shards
-    name: http://localhost:9200/_cat/shards
+    modified: 1628704141177
+    created: 1628702930789
+    url: http://localhost:9200/_cat/indices
+    name: listar os índices
     description: ""
     method: GET
     body: {}
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1628625941390
+    metaSortKey: -1628625941402.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -74,19 +74,19 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_dee60a5773ab4012acd483aa3df548b0
+  - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628702964234
-    created: 1628702930789
-    url: http://localhost:9200/_cat/indices
-    name: verificando os índices
+    modified: 1628704101606
+    created: 1628625975148
+    url: http://localhost:9200/_cat/shards
+    name: listar os chards
     description: ""
     method: GET
     body: {}
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1628625941365
+    metaSortKey: -1628625941390
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
