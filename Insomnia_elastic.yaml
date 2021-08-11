@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-11T18:28:18.032Z
+__export_date: 2021-08-11T19:08:46.029Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -45,27 +45,6 @@ resources:
     headers: []
     authentication: {}
     metaSortKey: -1628625941415
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628704101606
-    created: 1628625975148
-    url: http://localhost:9200/_cat/shards
-    name: listar os chards
-    description: ""
-    method: GET
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941390
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -137,37 +116,6 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_6208bbdaf9d3465d905341960e9b2310
-    parentId: fld_c1b800c0496647de9f88a1a519959bcb
-    modified: 1628705443162
-    created: 1628628298794
-    url: http://localhost:9200/novo_index/_settings
-    name: alterar índice
-    description: ""
-    method: PUT
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"settings":{
-        		"number_of_replicas": 0
-        	}
-        }
-    parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_f11df70d0cc3481c87fe41975a3134cd
-    authentication: {}
-    metaSortKey: -1628625941302.5
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
   - _id: req_fef133f16ae74af19cdcf8c420ca4586
     parentId: fld_c1b800c0496647de9f88a1a519959bcb
     modified: 1628705449034
@@ -202,6 +150,68 @@ resources:
     headers: []
     authentication: {}
     metaSortKey: -1628625941202.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
+    parentId: fld_d04698839d7144cf8c570026c0b33d0f
+    modified: 1628708792369
+    created: 1628625975148
+    url: http://localhost:9200/_cat/shards
+    name: listar os shards
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941390
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d04698839d7144cf8c570026c0b33d0f
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628708744455
+    created: 1628708741462
+    name: Shards
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941315
+    _type: request_group
+  - _id: req_6208bbdaf9d3465d905341960e9b2310
+    parentId: fld_d04698839d7144cf8c570026c0b33d0f
+    modified: 1628708796656
+    created: 1628628298794
+    url: http://localhost:9200/novo_index/_settings
+    name: alterar os shards
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"settings":{
+        		"number_of_replicas": 0
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f11df70d0cc3481c87fe41975a3134cd
+    authentication: {}
+    metaSortKey: -1628625941340
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -251,9 +261,40 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1628625941290
     _type: request_group
+  - _id: req_ad381cb3b85b49da9e1abcd5339b1789
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628708594915
+    created: 1628707584810
+    url: http://localhost:9200/novo_index/aluno/1
+    name: criar documento por tipo
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"titulo":"meu garoto",
+        	"nome": "Arthur",
+        	"sobrenome": "fulaninho"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_09bff01a96a54d679e6235463b235d5b
+    authentication: {}
+    metaSortKey: -1628625941277.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_b64b2c4178e84f2780709523ae643c5e
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628705403249
+    modified: 1628708606232
     created: 1628705073303
     url: http://localhost:9200/novo_index/_search
     name: listar todos os documentos de um índice
@@ -342,10 +383,10 @@ resources:
     _type: request
   - _id: req_5e422683e6b648fda0d3c7246ba349d6
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628705412902
+    modified: 1628708083567
     created: 1628705367146
     url: http://localhost:9200/_search
-    name: listar documentos com filtro
+    name: listar todos documentos com filtro
     description: ""
     method: GET
     body:
@@ -364,7 +405,28 @@ resources:
         value: application/json
         id: pair_fc01a30d40994238bc06103ed961721e
     authentication: {}
-    metaSortKey: -1628625941152.5
+    metaSortKey: -1628625941127.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9c2bb99260244787be416c9f37d96519
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628708893230
+    created: 1628708385147
+    url: http://localhost:9200/novo_index/_doc/1
+    name: deletar documento
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941077.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
