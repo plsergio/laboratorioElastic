@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-11T17:50:05.072Z
+__export_date: 2021-08-11T18:28:18.032Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -53,27 +53,6 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_dee60a5773ab4012acd483aa3df548b0
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628704141177
-    created: 1628702930789
-    url: http://localhost:9200/_cat/indices
-    name: listar os índices
-    description: ""
-    method: GET
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941402.5
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
   - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
     modified: 1628704101606
@@ -95,9 +74,40 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_7173d2d22e744b23a647ef4ed27affce
+  - _id: req_dee60a5773ab4012acd483aa3df548b0
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1628705434978
+    created: 1628702930789
+    url: http://localhost:9200/_cat/indices
+    name: listar os índices
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941402.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_c1b800c0496647de9f88a1a519959bcb
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628702107260
+    modified: 1628705464175
+    created: 1628705424356
+    name: Índice
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941340
+    _type: request_group
+  - _id: req_7173d2d22e744b23a647ef4ed27affce
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1628705438345
     created: 1628628001360
     url: http://localhost:9200/novo_index
     name: criar indice
@@ -118,7 +128,7 @@ resources:
         value: application/json
         id: pair_12c600b8847c41e99ddaab1200afddea
     authentication: {}
-    metaSortKey: -1628625941290
+    metaSortKey: -1628625941352.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -128,8 +138,8 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: req_6208bbdaf9d3465d905341960e9b2310
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628703103286
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1628705443162
     created: 1628628298794
     url: http://localhost:9200/novo_index/_settings
     name: alterar índice
@@ -149,7 +159,7 @@ resources:
         value: application/json
         id: pair_f11df70d0cc3481c87fe41975a3134cd
     authentication: {}
-    metaSortKey: -1628625941240
+    metaSortKey: -1628625941302.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -159,8 +169,8 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: req_fef133f16ae74af19cdcf8c420ca4586
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628703192179
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1628705449034
     created: 1628703153841
     url: http://localhost:9200/novo_index/_settings
     name: consultar índice
@@ -170,7 +180,7 @@ resources:
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1628625941215
+    metaSortKey: -1628625941252.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -180,8 +190,8 @@ resources:
     settingFollowRedirects: global
     _type: request
   - _id: req_abdd5598853a4e918e806e9b30639bed
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628703224308
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1628705453509
     created: 1628702392733
     url: http://localhost:9200/novo_index
     name: deletar índice
@@ -191,7 +201,170 @@ resources:
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1628625941190
+    metaSortKey: -1628625941202.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8dd8be5e28bc4e17bd124196cfb57062
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628705405520
+    created: 1628704673101
+    url: http://localhost:9200/novo_index/_doc/1
+    name: criar documento
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"titulo":"meu documento",
+        	"nome": "Paulo Sérgio",
+        	"sobrenome": "fulano"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_09bff01a96a54d679e6235463b235d5b
+    authentication: {}
+    metaSortKey: -1628625941302.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3a66e912df8740169915dc750e79143a
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628705465528
+    created: 1628705392474
+    name: Documentos
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941290
+    _type: request_group
+  - _id: req_b64b2c4178e84f2780709523ae643c5e
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628705403249
+    created: 1628705073303
+    url: http://localhost:9200/novo_index/_search
+    name: listar todos os documentos de um índice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941252.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_196be82537e94cc9a5c9b3ccbe9168db
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628705410254
+    created: 1628705302123
+    url: http://localhost:9200/novo_index/_search
+    name: listar documentos de um índice com filtro
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"match":{
+        			"sobrenome": "fulano"
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1628625941202.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_57e9f34b11314f1eb343b6fb57a2d953
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628705821487
+    created: 1628705651637
+    url: http://localhost:9200/novo_index/_search
+    name: listar documentos de um índice com filtro wildcard
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"wildcard":{
+        			"sobrenome": {
+        				"value": "ful*"				
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1628625941177.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5e422683e6b648fda0d3c7246ba349d6
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1628705412902
+    created: 1628705367146
+    url: http://localhost:9200/_search
+    name: listar documentos com filtro
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"match":{
+        			"sobrenome": "fulano"
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1628625941152.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
