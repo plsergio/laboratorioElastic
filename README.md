@@ -1,18 +1,18 @@
-# Laboratorio Elastic
+# Laboratório Elastic Search
 
 ### Requisitos
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - Set vm.max_map_count to at least 262144:
   - ` sudo sysctl -w vm.max_map_count=262144 `
 
-### Rode docker-compose para subir o cluster:
+### Rode docker-compose para subir o Cluster:
 - ` docker-compose up `
 
 ### Urls
 - master: http://localhost:9200/
 - kibana: http://localhost:5601/
 
-### Requests configurados no insomnia
+### Requests configurados no Insomnia
 - importar o arquivo [Insomnia_elastic.yaml](Insomnia_elastic.yaml) no Insomnia.
 
 ### Extensão do Chrome recomendada:
