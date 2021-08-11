@@ -13,7 +13,7 @@
 - kibana: http://localhost:5601/
 
 ### Requests configurados no insomnia
-- importar o arquivo [Insomnia_elastic.json](Insomnia_elastic.json) no Insomnia.
+- importar o arquivo [Insomnia_elastic.yaml](Insomnia_elastic.yaml) no Insomnia.
 
 ### Extensão do Chrome recomendada:
 - https://chrome.google.com/webstore/detail/elasticsearch-head/ffmkiejjmecolpfloofpjologoblkegm/related?hl=pt-BR
