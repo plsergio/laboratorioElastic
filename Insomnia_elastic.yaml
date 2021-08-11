@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-11T19:46:43.607Z
+__export_date: 2021-08-11T22:00:08.594Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -425,6 +425,261 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_91f17b9ac806411c9ae7d58824ae2461
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1628714145573
+    created: 1628714062649
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template
+    name: listar templates
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941240
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3827acac4d904e43b63978e6b0f3c6ca
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628711986808
+    created: 1628711981579
+    name: Mapeamento
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941240
+    _type: request_group
+  - _id: req_973eaff0d04c430bbd5c649b830b061d
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1628714849719
+    created: 1628714676613
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template/meu_template
+    name: criar template
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"template": "teste",
+        	"mappings":{
+        		"meu_tipo": {
+        			"dynamic_templates": [
+        				{
+        					"regra1": {
+        						"match": "nome*",
+        						"mapping": {
+        							"type": "string",
+        							"index": "anayzed"
+        						}
+        					}
+        				}
+        			]
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbd1ecf34e164f00a29887357d093a0e
+    authentication: {}
+    metaSortKey: -1628625941230.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d8d7142bc6894755b5f22723496fef30
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1628714438260
+    created: 1628714373713
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_mapping
+    name: listar mapeamento do indice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941221.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3e12d8df653347a480c9de8275a972e7
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1628714519571
+    created: 1628712003764
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/
+    name: criar mapeamento
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"mappings": {
+        		"properties": {
+        			"nome": {
+        				"type": "text",
+        				"fields": {
+        					"keyword": {
+        						"type": "keyword",
+        						"ignore_above": 256
+        					}
+        				}
+        			},
+        			"sobrenome": {
+        				"type": "text",
+        				"fields": {
+        					"keyword": {
+        						"type": "keyword",
+        						"ignore_above": 256
+        					}
+        				}
+        			},
+        			"titulo": {
+        				"type": "text",
+        				"fields": {
+        					"keyword": {
+        						"type": "keyword",
+        						"ignore_above": 256
+        					}
+        				}
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_43887079c64e4f8daf4dbad2abab376c
+    authentication: {}
+    metaSortKey: -1628625941190
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_402b8c03f0bf44189a66321288392e34
+    parentId: fld_c4d5ffa6911b4176ab23823b1a581787
+    modified: 1628719191580
+    created: 1628715562713
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_aliases?pretty
+    name: listar aliases
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941233.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_c4d5ffa6911b4176ab23823b1a581787
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628715576824
+    created: 1628715376147
+    name: Aliases
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941190
+    _type: request_group
+  - _id: req_f3b02cbbd5e94ca9894457f46fec8862
+    parentId: fld_c4d5ffa6911b4176ab23823b1a581787
+    modified: 1628715586144
+    created: 1628715395895
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_aliases
+    name: criar aliases
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"actions": [
+        		{ "add" : { "index" : "matriz", "alias" : "empresas" }},
+        		{ "add" : { "index" : "filial", "alias" : "empresas" }}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_43887079c64e4f8daf4dbad2abab376c
+    authentication: {}
+    metaSortKey: -1628625941183.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_81891d002972442b873ce44debfb58bc
+    parentId: fld_c4d5ffa6911b4176ab23823b1a581787
+    modified: 1628719157676
+    created: 1628715971206
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_aliases
+    name: criar aliases com filtro
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"actions": [
+        		{ 
+        			"add" : { 
+        				"index" : ["filial", "matriz"],
+        				"alias" : "cliente_vip",
+        				"filter" : { "term": {"tipo_cliente": "VIP"}}
+        			}
+        		}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_43887079c64e4f8daf4dbad2abab376c
+    authentication: {}
+    metaSortKey: -1628625941182.1875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: env_73f735e01d8d3e16bb1e2d10d6759060f9be64d1
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
     modified: 1628625866280
@@ -451,6 +706,12 @@ resources:
     contents: ""
     contentType: yaml
     _type: api_spec
+  - _id: uts_60b2ff6c9ec14de7b26e01d91b6195b7
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628715322720
+    created: 1628715230258
+    name: Health check
+    _type: unit_test_suite
   - _id: env_9c9c673b80854980a21fc7904f8808dd
     parentId: env_73f735e01d8d3e16bb1e2d10d6759060f9be64d1
     modified: 1628710791939
@@ -465,3 +726,13 @@ resources:
     isPrivate: false
     metaSortKey: 1628710422480
     _type: environment
+  - _id: ut_097426f271d148e8a8ca185d277e50ed
+    parentId: uts_60b2ff6c9ec14de7b26e01d91b6195b7
+    modified: 1628715242390
+    created: 1628715239188
+    requestId: req_1b7d0d20e0a34baea201d4cf666ba201
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
