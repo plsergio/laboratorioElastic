@@ -1,14 +1,14 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-11T19:08:46.029Z
+__export_date: 2021-08-11T19:46:43.607Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628625953164
+    modified: 1628711079703
     created: 1628625941440
-    url: http://localhost:9200/
-    name: http://localhost:9200/
+    url: http://{{ _.IP_DO_ELASTIC }}:9200
+    name: acessar o master
     description: ""
     method: GET
     body: {}
@@ -34,9 +34,9 @@ resources:
     _type: workspace
   - _id: req_1a53ee15503e4646af96616db9c696af
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628704166881
+    modified: 1628710809255
     created: 1628626230516
-    url: http://localhost:9200/_cat
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat
     name: listar comandos
     description: ""
     method: GET
@@ -53,11 +53,32 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628710825126
+    created: 1628625975148
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/shards
+    name: listar os shards
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941377.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_dee60a5773ab4012acd483aa3df548b0
     parentId: fld_c1b800c0496647de9f88a1a519959bcb
-    modified: 1628705434978
+    modified: 1628710839321
     created: 1628702930789
-    url: http://localhost:9200/_cat/indices
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/indices
     name: listar os índices
     description: ""
     method: GET
@@ -86,9 +107,9 @@ resources:
     _type: request_group
   - _id: req_7173d2d22e744b23a647ef4ed27affce
     parentId: fld_c1b800c0496647de9f88a1a519959bcb
-    modified: 1628705438345
+    modified: 1628710947751
     created: 1628628001360
-    url: http://localhost:9200/novo_index
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index
     name: criar indice
     description: ""
     method: PUT
@@ -118,9 +139,9 @@ resources:
     _type: request
   - _id: req_fef133f16ae74af19cdcf8c420ca4586
     parentId: fld_c1b800c0496647de9f88a1a519959bcb
-    modified: 1628705449034
+    modified: 1628710968301
     created: 1628703153841
-    url: http://localhost:9200/novo_index/_settings
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_settings
     name: consultar índice
     description: ""
     method: GET
@@ -139,9 +160,9 @@ resources:
     _type: request
   - _id: req_abdd5598853a4e918e806e9b30639bed
     parentId: fld_c1b800c0496647de9f88a1a519959bcb
-    modified: 1628705453509
+    modified: 1628710977936
     created: 1628702392733
-    url: http://localhost:9200/novo_index
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index
     name: deletar índice
     description: ""
     method: DELETE
@@ -158,43 +179,12 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_e4ed41de3c0347ceb51cdcdc050565d5
-    parentId: fld_d04698839d7144cf8c570026c0b33d0f
-    modified: 1628708792369
-    created: 1628625975148
-    url: http://localhost:9200/_cat/shards
-    name: listar os shards
-    description: ""
-    method: GET
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941390
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: fld_d04698839d7144cf8c570026c0b33d0f
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628708744455
-    created: 1628708741462
-    name: Shards
-    description: ""
-    environment: {}
-    environmentPropertyOrder: null
-    metaSortKey: -1628625941315
-    _type: request_group
   - _id: req_6208bbdaf9d3465d905341960e9b2310
-    parentId: fld_d04698839d7144cf8c570026c0b33d0f
-    modified: 1628708796656
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1628710989656
     created: 1628628298794
-    url: http://localhost:9200/novo_index/_settings
-    name: alterar os shards
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_settings
+    name: alterar configurações do índice
     description: ""
     method: PUT
     body:
@@ -211,7 +201,7 @@ resources:
         value: application/json
         id: pair_f11df70d0cc3481c87fe41975a3134cd
     authentication: {}
-    metaSortKey: -1628625941340
+    metaSortKey: -1628625941152.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -222,10 +212,10 @@ resources:
     _type: request
   - _id: req_8dd8be5e28bc4e17bd124196cfb57062
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628705405520
+    modified: 1628711000546
     created: 1628704673101
-    url: http://localhost:9200/novo_index/_doc/1
-    name: criar documento
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_doc/1
+    name: criar e alterar documento
     description: ""
     method: POST
     body:
@@ -263,9 +253,9 @@ resources:
     _type: request_group
   - _id: req_ad381cb3b85b49da9e1abcd5339b1789
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628708594915
+    modified: 1628711008489
     created: 1628707584810
-    url: http://localhost:9200/novo_index/aluno/1
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/aluno/1
     name: criar documento por tipo
     description: ""
     method: POST
@@ -294,10 +284,10 @@ resources:
     _type: request
   - _id: req_b64b2c4178e84f2780709523ae643c5e
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628708606232
+    modified: 1628711014452
     created: 1628705073303
-    url: http://localhost:9200/novo_index/_search
-    name: listar todos os documentos de um índice
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
+    name: listar os documentos de um índice
     description: ""
     method: GET
     body: {}
@@ -315,9 +305,9 @@ resources:
     _type: request
   - _id: req_196be82537e94cc9a5c9b3ccbe9168db
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628705410254
+    modified: 1628711027099
     created: 1628705302123
-    url: http://localhost:9200/novo_index/_search
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
     name: listar documentos de um índice com filtro
     description: ""
     method: GET
@@ -348,9 +338,9 @@ resources:
     _type: request
   - _id: req_57e9f34b11314f1eb343b6fb57a2d953
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628705821487
+    modified: 1628711036339
     created: 1628705651637
-    url: http://localhost:9200/novo_index/_search
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
     name: listar documentos de um índice com filtro wildcard
     description: ""
     method: GET
@@ -383,9 +373,9 @@ resources:
     _type: request
   - _id: req_5e422683e6b648fda0d3c7246ba349d6
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628708083567
+    modified: 1628711045000
     created: 1628705367146
-    url: http://localhost:9200/_search
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_search
     name: listar todos documentos com filtro
     description: ""
     method: GET
@@ -416,9 +406,9 @@ resources:
     _type: request
   - _id: req_9c2bb99260244787be416c9f37d96519
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628708893230
+    modified: 1628711051591
     created: 1628708385147
-    url: http://localhost:9200/novo_index/_doc/1
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_doc/1
     name: deletar documento
     description: ""
     method: DELETE
@@ -461,3 +451,17 @@ resources:
     contents: ""
     contentType: yaml
     _type: api_spec
+  - _id: env_9c9c673b80854980a21fc7904f8808dd
+    parentId: env_73f735e01d8d3e16bb1e2d10d6759060f9be64d1
+    modified: 1628710791939
+    created: 1628710422480
+    name: Desenvolvimento
+    data:
+      IP_DO_ELASTIC: localhost
+    dataPropertyOrder:
+      "&":
+        - IP_DO_ELASTIC
+    color: "#10e04e"
+    isPrivate: false
+    metaSortKey: 1628710422480
+    _type: environment
