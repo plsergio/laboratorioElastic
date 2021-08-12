@@ -12,7 +12,7 @@
 - master: http://localhost:9200/
 - kibana: http://localhost:5601/
 
-### Requests configurados no Insomnia
+### Consultas configuradas no Insomnia
 - importar o arquivo [Insomnia_elastic.yaml](Insomnia_elastic.yaml) no Insomnia.
 
 ### Extensão do Chrome recomendada:
