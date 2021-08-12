@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-08-11T22:00:08.594Z
+__export_date: 2021-08-12T19:38:25.973Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -45,6 +45,27 @@ resources:
     headers: []
     authentication: {}
     metaSortKey: -1628625941415
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b1f4be7fb3244d04bb0cc8f41f809eb4
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628790535047
+    created: 1628790488281
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/nodes?v
+    name: listar nodes
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941408.75
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -458,12 +479,12 @@ resources:
     _type: request_group
   - _id: req_973eaff0d04c430bbd5c649b830b061d
     parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
-    modified: 1628714849719
+    modified: 1628793814227
     created: 1628714676613
     url: http://{{ _.IP_DO_ELASTIC }}:9200/_template/meu_template
     name: criar template
     description: ""
-    method: GET
+    method: POST
     body:
       mimeType: application/json
       text: |-
