@@ -1,4 +1,4 @@
-# Laboratório Elastic Search
+# Laboratório Elastic Stack
 
 ### Requisitos
 - [Docker Compose](https://docs.docker.com/compose/install/)
