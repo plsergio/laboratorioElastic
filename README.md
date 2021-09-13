@@ -17,8 +17,13 @@
 - importar o arquivo [Insomnia_elastic.yaml](assets/Insomnia_elastic.yaml).
 ![](assets/insomnia.png)
 
-### Extensão do Chrome recomendada:
-- https://chrome.google.com/webstore/detail/elasticsearch-head/ffmkiejjmecolpfloofpjologoblkegm/related?hl=pt-BR
+### Extensões recomendadas:
+- Chrome:
+  - https://chrome.google.com/webstore/detail/elasticsearch-head/ffmkiejjmecolpfloofpjologoblkegm/related?hl=pt-BR
+
+- Visual Studio:
+  - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+  - [Elasticsearch for VSCode](https://marketplace.visualstudio.com/items?itemName=ria.elastic)
 
 ### Documentação
 - Query Strings:
