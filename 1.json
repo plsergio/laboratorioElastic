@@ -1,0 +1,168 @@
+{
+    "response": {
+        "headers": {
+            "Transfer-Encoding": "chunked",
+            "Access-Control-Allow-Origin": "*",
+            "X-Content-Type-Options": "nosniff",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+            "Pragma": "no-cache",
+            "Date": "Tue, 10 Aug 2021 19:49:29 GMT",
+            "Access-Control-Allow-Headers": "authorization,content-type",
+            "Access-Control-Expose-Headers": "X-Total-Count,X-Validation-Error",
+            "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+            "Expires": "0",
+            "X-XSS-Protection": "1; mode=block",
+            "Access-Control-Max-Age": "1800",
+            "Content-Type": "application/json;charset=UTF-8"
+        },
+        "status_code": 200,
+        "reason_phrase": "OK",
+        "body": [
+            {
+                "saldo_atualizado": 0,
+                "saldo_bloqueado": 0,
+                "numero_processo": "00046661020028070000",
+                "qtd_depositos": 1,
+                "valor_depositado": 517647.47,
+                "polo_passivo": {
+                    "tipo": {
+                        "codigo": 2,
+                        "descricao": "Jurídica"
+                    },
+                    "documento": {
+                        "tipo": {
+                            "codigo": 2,
+                            "descricao": "CNPJ"
+                        },
+                        "numero": "394601000126"
+                    },
+                    "nome": "DISTRITO FEDERAL"
+                },
+                "conta": "2840232248",
+                "valor_nominal_disponivel": 0,
+                "polo_ativo": {
+                    "tipo": {
+                        "codigo": 1,
+                        "descricao": "Física"
+                    },
+                    "documento": {
+                        "tipo": {
+                            "codigo": 1,
+                            "descricao": "CPF"
+                        },
+                        "numero": "44272502115"
+                    },
+                    "nome": "WILMA CASSIA LOURENCO SALES"
+                },
+                "vara": {
+                    "codigo": 104,
+                    "codigoBacenjud": 104,
+                    "codigoLegado": 54374,
+                    "descricao": "COORDENADORIA DE CONCILIACAO DE PRECATORIOS"
+                },
+                "agencia": "284",
+                "status": {
+                    "codigo": 1,
+                    "descricao": "Ativa"
+                }
+            },
+            {
+                "saldo_atualizado": 519969.13,
+                "saldo_bloqueado": 0,
+                "numero_processo": "00046661020028070000",
+                "qtd_depositos": 1,
+                "valor_depositado": 996087.83,
+                "polo_passivo": {
+                    "tipo": {
+                        "codigo": 2,
+                        "descricao": "Jurídica"
+                    },
+                    "documento": {
+                        "tipo": {
+                            "codigo": 2,
+                            "descricao": "CNPJ"
+                        },
+                        "numero": "394684000153"
+                    },
+                    "nome": "SECRETARIA DE ESTADO DE FAZENDA DO DISTRITO FEDERAL"
+                },
+                "conta": "2840221483",
+                "valor_nominal_disponivel": 478440.36,
+                "polo_ativo": {
+                    "tipo": {
+                        "codigo": 1,
+                        "descricao": "Física"
+                    },
+                    "documento": {
+                        "tipo": {
+                            "codigo": 1,
+                            "descricao": "CPF"
+                        },
+                        "numero": "507894146"
+                    },
+                    "nome": "WENDELL LOURENCO MENDES SALES"
+                },
+                "vara": {
+                    "codigo": 104,
+                    "codigoBacenjud": 104,
+                    "codigoLegado": 54374,
+                    "descricao": "COORDENADORIA DE CONCILIACAO DE PRECATORIOS"
+                },
+                "agencia": "284",
+                "status": {
+                    "codigo": 1,
+                    "descricao": "Ativa"
+                }
+            },
+            {
+                "saldo_atualizado": 4203888.46,
+                "saldo_bloqueado": 0,
+                "numero_processo": "00046661020028070000",
+                "qtd_depositos": 13,
+                "valor_depositado": 4268471.79,
+                "polo_passivo": {
+                    "tipo": {
+                        "codigo": 2,
+                        "descricao": "Jurídica"
+                    },
+                    "documento": {
+                        "tipo": {
+                            "codigo": 2,
+                            "descricao": "CNPJ"
+                        },
+                        "numero": "394684000153"
+                    },
+                    "nome": "SECRETARIA DE ESTADO DE FAZENDA DO DISTRITO FEDERAL"
+                },
+                "conta": "2840221475",
+                "valor_nominal_disponivel": 4193248.65,
+                "polo_ativo": {
+                    "tipo": {
+                        "codigo": 1,
+                        "descricao": "Física"
+                    },
+                    "documento": {
+                        "tipo": {
+                            "codigo": 1,
+                            "descricao": "CPF"
+                        },
+                        "numero": "8451290159"
+                    },
+                    "nome": "LOURIVAL RODRIGUES DOS SANTOS"
+                },
+                "vara": {
+                    "codigo": 104,
+                    "codigoBacenjud": 104,
+                    "codigoLegado": 54374,
+                    "descricao": "COORDENADORIA DE CONCILIACAO DE PRECATORIOS"
+                },
+                "agencia": "284",
+                "status": {
+                    "codigo": 1,
+                    "descricao": "Ativa"
+                }
+            }
+        ],
+        "duration_in_ms": 1146
+    }
+}
