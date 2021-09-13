@@ -14,7 +14,8 @@
 
 ### Consultas configuradas no Insomnia
 - Instalar o [Insomnia](https://insomnia.rest/download).
-- importar o arquivo [Insomnia_elastic.yaml](Insomnia_elastic.yaml).
+- importar o arquivo [Insomnia_elastic.yaml](assets/Insomnia_elastic.yaml).
+![](assets/insomnia.png)
 
 ### Extensão do Chrome recomendada:
 - https://chrome.google.com/webstore/detail/elasticsearch-head/ffmkiejjmecolpfloofpjologoblkegm/related?hl=pt-BR
