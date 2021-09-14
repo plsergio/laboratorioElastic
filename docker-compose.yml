@@ -5,10 +5,10 @@ services:
     container_name: es01
     environment:
       - node.name=es01
-      - node.roles=master,data
+      - node.roles=master
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es01,es02
-      - cluster.initial_master_nodes=es01,es02,es03
+      - cluster.initial_master_nodes=es01
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
@@ -27,10 +27,10 @@ services:
     container_name: es02
     environment:
       - node.name=es02
-      - node.roles=master,data
+      - node.roles=data
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es03
-      - cluster.initial_master_nodes=es01,es02,es03
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
@@ -44,27 +44,27 @@ services:
     networks:
       - elastic
 
-  es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-    container_name: es03
-    environment:
-      - node.name=es03
-      - node.roles=master,data
-      - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es02,es01
-      - cluster.initial_master_nodes=es01,es02,es03
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data03:/usr/share/elasticsearch/data
-    ports:
-      - 9202:9200
-    networks:
-      - elastic
+  # es03:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+  #   container_name: es03
+  #   environment:
+  #     - node.name=es03
+  #     - node.roles=master,data
+  #     - cluster.name=es-docker-cluster
+  #     - discovery.seed_hosts=es02,es01
+  #     - cluster.initial_master_nodes=es01,es02,es03
+  #     - bootstrap.memory_lock=true
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   volumes:
+  #     - data03:/usr/share/elasticsearch/data
+  #   ports:
+  #     - 9202:9200
+  #   networks:
+  #     - elastic
 
   kib01:
     image: docker.elastic.co/kibana/kibana:7.14.0
@@ -84,8 +84,8 @@ volumes:
     driver: local
   data02:
     driver: local
-  data03:
-    driver: local
+  # data03:
+  #   driver: local
 
 networks:
   elastic:
