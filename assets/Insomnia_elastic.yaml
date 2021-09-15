@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-09-14T20:26:58.576Z
+__export_date: 2021-09-15T19:39:51.890Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -200,6 +200,47 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_cd068a650f724202a2f044e3d34e2575
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1631734674317
+    created: 1631734223265
+    url: http://192.168.200.10:9200/teste4/
+    name: Create index w/ settings
+    description: ""
+    method: PUT
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"settings": {
+        		"number_of_shards": 1,
+        		"number_of_replicas": 1,
+        		"index.routing.allocation.require.box_type": "hot"
+        	},
+        	"mappings": {
+        		"dynamic": "strict",
+        		"properties": {
+        			"tipo_sanguineo": {
+        				"type": "text"
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ad220f4ac7694ad58e5f60c02e239046
+    authentication: {}
+    metaSortKey: -1628625941302.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_fef133f16ae74af19cdcf8c420ca4586
     parentId: fld_c1b800c0496647de9f88a1a519959bcb
     modified: 1631649181943
@@ -294,6 +335,179 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_d47cad23ddcc46e5a8cd8576cff6681e
+    parentId: fld_ab1016664df0454cb45368ce002e27bd
+    modified: 1631734223237
+    created: 1631734223237
+    url: https://192.168.200.10:9200/adega2/
+    name: Create index w/ settings & mapping
+    description: ""
+    method: PUT
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"settings": {
+        		"number_of_shards": 1,
+        		"number_of_replicas": 1
+        	},
+        	"mappings": {
+        		"properties": {
+        			"bebida": {
+        				"type": "text"
+        			},
+        			"marca": {
+        				"type": "text"
+        			},
+        			"estoque": {
+        				"type": "long"
+        			},
+        			"valor": {
+        				"type": "float"
+        			},
+        			"tipo": {
+        				"type": "text"
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ad220f4ac7694ad58e5f60c02e239046
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424103
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ab1016664df0454cb45368ce002e27bd
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1631734316576
+    created: 1631734223233
+    name: Reindex
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941102.5
+    _type: request_group
+  - _id: req_627e2329346e4675b430200d640bf46c
+    parentId: fld_ab1016664df0454cb45368ce002e27bd
+    modified: 1631734223243
+    created: 1631734223243
+    url: https://192.168.200.10:9200/_cat/indices
+    name: GET
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424102.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d5bd15287db2499b9663e7abe6fd2dfa
+    parentId: fld_ab1016664df0454cb45368ce002e27bd
+    modified: 1631734223240
+    created: 1631734223240
+    url: https://192.168.200.10:9200/_reindex
+    name: Reindex API
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"source": {
+        		"index": "adega"
+        	},
+        	"dest": {
+        		"index": "adega2"
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ad220f4ac7694ad58e5f60c02e239046
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424102.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0dd1145696424bdba8913b489b408d3f
+    parentId: fld_ab1016664df0454cb45368ce002e27bd
+    modified: 1631734223245
+    created: 1631734223245
+    url: https://192.168.200.10:9200/_ingest/pipeline/string_to_float
+    name: pipeline
+    description: ""
+    method: PUT
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"description": "converts the content of the field2 to string type",
+        	"processors": [
+        		{
+        			"convert": {
+        				"field": "valor",
+        				"type": "float"
+        			}
+        		}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ad220f4ac7694ad58e5f60c02e239046
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424102.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_8dd8be5e28bc4e17bd124196cfb57062
     parentId: fld_3a66e912df8740169915dc750e79143a
     modified: 1628711000546
@@ -335,12 +549,43 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1628625941290
     _type: request_group
+  - _id: req_1f6946a1eba1418abdc18add44a75906
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1631734548647
+    created: 1631734223262
+    url: http://192.168.200.10:9200/adega/_update/12
+    name: Create doc
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"doc" : {
+        		"valor": "75,50"
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_72abf9d30deb4a0b876a8709cbf392fb
+    authentication: {}
+    metaSortKey: -1628625941290
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_1d7c708eb0c242faba695d2916a62223
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1631649256886
+    modified: 1631734762496
     created: 1631649215688
     url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_doc/1
-    name: atualizar documento
+    name: atualizar doc (full)
     description: ""
     method: PUT
     body:
@@ -367,118 +612,29 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_b64b2c4178e84f2780709523ae643c5e
+  - _id: req_dcb6b207b8f7447e9a6fbc457c0deb69
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628711014452
-    created: 1628705073303
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
-    name: listar os documentos de um índice
+    modified: 1631734772818
+    created: 1631734223261
+    url: http://192.168.200.10:9200/teste1/_doc/1
+    name: Update doc (parcialmente)
     description: ""
-    method: GET
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941252.5
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_196be82537e94cc9a5c9b3ccbe9168db
-    parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628711027099
-    created: 1628705302123
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
-    name: listar documentos de um índice com filtro
-    description: ""
-    method: GET
+    method: POST
     body:
-      mimeType: application/json
+      mimeType: ""
       text: |-
         {
-        	"query":{
-        		"match":{
-        			"sobrenome": "fulano"
-        		}
-        	}
+            "doc": {
+                "age": 42
+            }
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_fc01a30d40994238bc06103ed961721e
-    authentication: {}
-    metaSortKey: -1628625941202.5
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_57e9f34b11314f1eb343b6fb57a2d953
-    parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1631650151605
-    created: 1628705651637
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
-    name: listar documentos de um índice com filtro wildcard
-    description: ""
-    method: GET
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"query":{
-        		"wildcard":{
-        			"sobrenome": "ful*"	
-        		}
-        	}
-        }
-    parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_fc01a30d40994238bc06103ed961721e
+        id: pair_92ef9ccdd811424692a1d52047d31254
     authentication: {}
     metaSortKey: -1628625941177.5
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_5e422683e6b648fda0d3c7246ba349d6
-    parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1628711045000
-    created: 1628705367146
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/_search
-    name: listar todos documentos com filtro
-    description: ""
-    method: GET
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"query":{
-        		"match":{
-        			"sobrenome": "fulano"
-        		}
-        	}
-        }
-    parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_fc01a30d40994238bc06103ed961721e
-    authentication: {}
-    metaSortKey: -1628625941127.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -508,12 +664,71 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_b64b2c4178e84f2780709523ae643c5e
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1631731172434
+    created: 1628705073303
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
+    name: listar os documentos de um índice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941065
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7265f4c12efa4fa9848f605380094975
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1631734601362
+    created: 1631734223260
+    url: http://192.168.200.10:9200/_mget
+    name: Get multiple docs (_mget)
+    description: ""
+    method: GET
+    body:
+      mimeType: ""
+      text: |-
+        {
+            "docs": [
+                {
+                    "_index": "adega",
+                    "_id": "1"
+                },
+                {
+                    "_index": "boteco",
+                    "_id": "3"
+                }
+            ]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_72f074bd472244f792f699f0cad91dfa
+    authentication: {}
+    metaSortKey: -1628625941061.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_4143e5ee28fd405da71fd33366de8a75
     parentId: fld_b9c1436f37324ba5923ec064c82c1ff5
-    modified: 1631650682894
+    modified: 1631731076035
     created: 1631650444947
     url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_bulk
-    name: bulk
+    name: criar bulk
     description: ""
     method: PUT
     body:
@@ -575,20 +790,307 @@ resources:
     _type: request
   - _id: fld_b9c1436f37324ba5923ec064c82c1ff5
     parentId: fld_3a66e912df8740169915dc750e79143a
-    modified: 1631650962318
+    modified: 1631732794901
     created: 1631650664402
     name: bulk (em lote)
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1628625941027.5
+    metaSortKey: -1628625941058.75
     _type: request_group
-  - _id: req_eb2f5c5d82f247e8aa3d0c6b68ee61b7
+  - _id: req_f088ef434f924d9d95261652e9412ea2
     parentId: fld_b9c1436f37324ba5923ec064c82c1ff5
-    modified: 1631650670803
+    modified: 1631651545169
+    created: 1631651408954
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_doc/12
+    name: criar um bulk
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        "bebida": "Whisky",
+        "marca": "Jack Daniel's",
+        "estoque": 8,
+        "valor": "69,90",
+        "tipo": "Garrafa 750ml"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_09bff01a96a54d679e6235463b235d5b
+    authentication: {}
+    metaSortKey: -1628625941227.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_17394747664f465d8151e2d0bb4e9faf
+    parentId: fld_b9c1436f37324ba5923ec064c82c1ff5
+    modified: 1631651708485
+    created: 1631651571229
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_doc/12
+    name: atualizar bulk
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        "bebida": "Whisky",
+        "marca": "Jack Daniel's",
+        "estoque": 8,
+        "valor": "73,30",
+        "tipo": "Garrafa 750ml"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_09bff01a96a54d679e6235463b235d5b
+    authentication: {}
+    metaSortKey: -1628625941215
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5e422683e6b648fda0d3c7246ba349d6
+    parentId: fld_df72d5487beb496a9c032ca7f9ead585
+    modified: 1631732648584
+    created: 1628705367146
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_search
+    name: listar todos documentos com filtro
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"match":{
+        			"sobrenome": "fulano"
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1630179281162.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_df72d5487beb496a9c032ca7f9ead585
+    parentId: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    modified: 1631732643421
+    created: 1631732643421
+    name: match (exato)
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1631732643421
+    _type: request_group
+  - _id: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    parentId: fld_3a66e912df8740169915dc750e79143a
+    modified: 1631731106019
+    created: 1631731096193
+    name: Search
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941052.5
+    _type: request_group
+  - _id: req_196be82537e94cc9a5c9b3ccbe9168db
+    parentId: fld_df72d5487beb496a9c032ca7f9ead585
+    modified: 1631732660525
+    created: 1628705302123
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
+    name: listar documentos de um índice com filtro
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"match":{
+        			"sobrenome": "fulano"
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1630179281112.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_05cd4c15d687459d86b8be78abd3eeb3
+    parentId: fld_df72d5487beb496a9c032ca7f9ead585
+    modified: 1631732772500
+    created: 1631732515603
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_search
+    name: search match content
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"match":{
+        			"content": {
+        				"query": "texto",
+        				"operator": "and"
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1630179281062.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3c3f10ef6a774499bc9bea2e01ee7af0
+    parentId: fld_df72d5487beb496a9c032ca7f9ead585
+    modified: 1631732929720
+    created: 1631732891189
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_search
+    name: search match phrase content (frase exata)
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"match_phrase":{
+        			"content": {
+        				"query": "texto",
+        				"operator": "and"
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1629765281256.625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_105cbe69e7f54c428ab6b8ae341a4da6
+    parentId: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    modified: 1631732744282
+    created: 1631650725593
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_search
+    name: search like
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query":{
+        		"wildcard":{
+        			"marca": "heine*"
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1628625941290
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_afc198e396c34868b81f45d16ea2cf25
+    parentId: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    modified: 1631731136809
+    created: 1631730949582
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_search
+    name: search paginada bulk
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"from":0,
+        	"size":20
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_fc01a30d40994238bc06103ed961721e
+    authentication: {}
+    metaSortKey: -1628625941252.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_eb2f5c5d82f247e8aa3d0c6b68ee61b7
+    parentId: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    modified: 1631731123267
     created: 1631650552002
     url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_search
-    name: listar bulk
+    name: listar por tamanho
     description: ""
     method: GET
     body:
@@ -612,21 +1114,195 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_105cbe69e7f54c428ab6b8ae341a4da6
-    parentId: fld_b9c1436f37324ba5923ec064c82c1ff5
-    modified: 1631651182203
-    created: 1631650725593
+  - _id: req_90cb558377604aaab1b719b1d5dcf36d
+    parentId: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    modified: 1631733284455
+    created: 1631733187853
     url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_search
-    name: search bulk
+    name: ordenar
     description: ""
     method: GET
     body:
       mimeType: application/json
       text: |-
         {
-        	"query":{
-        		"wildcard":{
-        			"marca": "heine*"
+        	"sort":{
+        		"valor.keyword": "desc"
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_4714c1cd242741ebbaec525d65019be4
+    authentication: {}
+    metaSortKey: -1628625941193.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_708a9cf3a6504fa89da125d1d59492c0
+    parentId: fld_d1609e0ca35a471fb093bd6d18e1c463
+    modified: 1631734223249
+    created: 1631734223249
+    url: http://192.168.200.10:9200/_cat/thread_pool/?v&h=id,name,active,rejected,completed,queue
+    name: Thread pool generic
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1629900643487.211
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d1609e0ca35a471fb093bd6d18e1c463
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734367297
+    created: 1631734223248
+    name: pool
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1630363768706
+    _type: request_group
+  - _id: fld_888864bdc9bd46179b256a80c2dcd853
+    parentId: fld_5124bf78e2b74f09acf14f6c7acc1d33
+    modified: 1631734276904
+    created: 1631734223229
+    name: Avançado
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941143.125
+    _type: request_group
+  - _id: req_a1ac72a3bd9f4e40a8f4220bba622283
+    parentId: fld_d1609e0ca35a471fb093bd6d18e1c463
+    modified: 1631734223251
+    created: 1631734223251
+    url: http://192.168.200.10:9200/_cat/thread_pool/write?v&h=id,name,active,rejected,completed,queue
+    name: Thread pool write
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1629899994848.3164
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_88a010b6efef4098b5f6d155c51618c4
+    parentId: fld_d1609e0ca35a471fb093bd6d18e1c463
+    modified: 1631734223253
+    created: 1631734223253
+    url: http://192.168.200.10:9200/_cat/thread_pool/?v&h=id,name,active,rejected,completed,queue
+    name: Thread pool
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1629899670528.8691
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1b83ce3fcb5245108e36689928d96d12
+    parentId: fld_d1609e0ca35a471fb093bd6d18e1c463
+    modified: 1631734223255
+    created: 1631734223255
+    url: http://192.168.200.10:9200/_nodes/node-primary/stats/thread_pool
+    name: Thread pool node
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1629899508369.1455
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_47dae9e59da44d5c8c3ec39fd583dbb3
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223258
+    created: 1631734223258
+    url: http://192.168.200.10:9200/adega/_search
+    name: Search all
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"sort": {
+        		"valor.keyword" : "desc"
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6fd3bb67330f4e949df0e32078f69022
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424091
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7a9f1a48af7b4771a3b36d5879555679
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223257
+    created: 1631734223257
+    url: http://192.168.200.10:9200/adega/_search/
+    name: Search query match
+    description: ""
+    method: GET
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"query": {
+        		"match": {
+        			"bebida": {
+        				"query": "cerveja vodka",
+        				"operator": "and"
+        			}
         		}
         	}
         }
@@ -634,9 +1310,14 @@ resources:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_fc01a30d40994238bc06103ed961721e
-    authentication: {}
-    metaSortKey: -1628625941152.5
+        id: pair_07b53a6c7ad84308a9eb1464ac30112b
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424089
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -645,19 +1326,36 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_91f17b9ac806411c9ae7d58824ae2461
-    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
-    modified: 1628714145573
-    created: 1628714062649
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template
-    name: listar templates
+  - _id: req_333e55ac76fa435da2ff45aa46afa9d5
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223277
+    created: 1631734223277
+    url: http://192.168.200.10:9200/adega/_search
+    name: Search wildcard
     description: ""
     method: GET
-    body: {}
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"query": {
+        		"wildcard": {
+        			"marca": "hei*"
+        		}
+        	}
+        }
     parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941240
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_07b53a6c7ad84308a9eb1464ac30112b
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424082.75
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -666,39 +1364,72 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: fld_3827acac4d904e43b63978e6b0f3c6ca
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1628711986808
-    created: 1628711981579
-    name: Mapeamento
+  - _id: req_68f12e83d9c3442189eb42aba7064463
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223273
+    created: 1631734223273
+    url: http://192.168.200.10:9200/adega,boteco/_search
+    name: Search multi_match
     description: ""
-    environment: {}
-    environmentPropertyOrder: null
-    metaSortKey: -1628625941240
-    _type: request_group
-  - _id: req_973eaff0d04c430bbd5c649b830b061d
-    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
-    modified: 1628793814227
-    created: 1628714676613
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template/meu_template
-    name: criar template
+    method: GET
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"query": {
+        		"multi_match": {
+        			"query": "cerveja",
+        			"fields": [
+        				"bebida^2",
+        				"tipo",
+        				"marca"
+        			]
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_07b53a6c7ad84308a9eb1464ac30112b
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424076.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_73491b38f5df4351b401196239c77695
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223272
+    created: 1631734223272
+    url: http://192.168.200.10:9200/adega/_search/
+    name: Search w/ bool
     description: ""
-    method: POST
+    method: GET
     body:
       mimeType: application/json
       text: |-
         {
-        	"template": "teste",
-        	"mappings":{
-        		"meu_tipo": {
-        			"dynamic_templates": [
+        	"query": {
+        		"bool": {
+        			"must": [
         				{
-        					"regra1": {
-        						"match": "nome*",
-        						"mapping": {
-        							"type": "string",
-        							"index": "anayzed"
-        						}
+        					"match": {
+        						"bebida": "cerveja"
+        					}
+        				},
+        				{
+        					"match": {
+        						"marca": "heineken"
         					}
         				}
         			]
@@ -709,9 +1440,14 @@ resources:
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_bbd1ecf34e164f00a29887357d093a0e
-    authentication: {}
-    metaSortKey: -1628625941230.625
+        id: pair_3e14b723d6874f2f84fcf49b80212391
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424064
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -720,39 +1456,359 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_d8d7142bc6894755b5f22723496fef30
-    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
-    modified: 1628714438260
-    created: 1628714373713
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_mapping
-    name: listar mapeamento do indice
+  - _id: req_7e41cab66df240009df3477bf2871715
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223267
+    created: 1631734223267
+    url: http://192.168.200.10:9200/adega/_search
+    name: Search w/ filter
     description: ""
     method: GET
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941221.25
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_3e12d8df653347a480c9de8275a972e7
-    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
-    modified: 1628714519571
-    created: 1628712003764
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/
-    name: criar mapeamento
-    description: ""
-    method: POST
     body:
       mimeType: application/json
       text: |-
         {
+        	"query": {
+        		"bool": {
+        			"must": {
+        				"match": {
+        					"bebida": "cerVEja"
+        				}
+        			},
+        			"filter": {
+        				"range": {
+        					"estoque": {
+        						"gte": 500
+        					}
+        				}
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_66c784f8828a4d5eb2b9302dae3c7d38
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424039
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7db932f79e444797a926aab810c1e7e1
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223275
+    created: 1631734223275
+    url: http://192.168.200.10:9200/adega/_search
+    name: Search w/ filter 2
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query": {
+        		"bool": {
+        			"must": {
+        				"match": {
+        					"bebida": "cerveja"
+        				}
+        			},
+        			"filter": {
+        				"match": {
+        					"marca": "heineken"
+        				}
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_66c784f8828a4d5eb2b9302dae3c7d38
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424026.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e0a75ca92da64929ba69a6833e82cb25
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223274
+    created: 1631734223274
+    url: http://192.168.200.10:9200/adega/_search
+    name: Search w/ should
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query": {
+        		"bool": {
+        			"must": {
+        				"match": {
+        					"bebida": "cerveja"
+        				}
+        			},
+        			"should": {
+        				"wildcard": {
+        					"marca": "hei*"
+        				}
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_66c784f8828a4d5eb2b9302dae3c7d38
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838424014
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4e92344b240d417a8355799277f22cf3
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223269
+    created: 1631734223269
+    url: http://192.168.200.10:9200/*/_search/
+    name: Search armageddon
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_99637d38544e4d749a77d3587edde09c
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838423989
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fcd6b6f372294a19bf42ef9933647864
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223271
+    created: 1631734223271
+    url: http://192.168.200.10:9200/adega/_count
+    name: Count
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"query": {
+        		"bool": {
+        			"must": [
+        				{
+        					"match": {
+        						"bebida": "cerveja"
+        					}
+        				},
+        				{
+        					"match": {
+        						"marca": "heineken"
+        					}
+        				}
+        			]
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_4a5832fa57fd4509ba3a7c5ed2849f65
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838423939
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_56d828b83a91405798fbcb0a493b6216
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223278
+    created: 1631734223278
+    url: http://192.168.200.10:9200/boteco/_search
+    name: Search aggs
+    description: ""
+    method: GET
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"size": 0,
+        	"aggs": {
+        		"max_valor": {
+        			"avg" : {
+        				"field": "valor"
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_07b53a6c7ad84308a9eb1464ac30112b
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838423889
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2ebb35d0769749e7a21afb616b1743b1
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734223279
+    created: 1631734223279
+    url: http://192.168.200.10:9200/adega/_search
+    name: Search query w/ aggs
+    description: ""
+    method: GET
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"size": 0,
+        	"query": {
+        		"match": {
+        			"bebida": "cerveja"
+        		}
+        	},
+        	"aggs": {
+        		"max_estoque": {
+        			"stats" : {
+        				"field": "estoque"
+        			}
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_07b53a6c7ad84308a9eb1464ac30112b
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1629838382947
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_938c99493a04441cae7352470172117e
+    parentId: fld_888864bdc9bd46179b256a80c2dcd853
+    modified: 1631734491532
+    created: 1631734223264
+    url: http://192.168.200.10:9200
+    name: Update settings
+    description: ""
+    method: GET
+    body:
+      mimeType: ""
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_057991c956bb49c7b1168a8534151a50
+    authentication: {}
+    metaSortKey: -1629838380341.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6066ff048bb5477b840e6034ef958909
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1631729271005
+    created: 1631729271005
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/
+    name: criar mapeamento
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "settings": {
+                "number_of_shards": 1,
+                "number_of_replicas": 1
+        },
+
         	"mappings": {
         		"properties": {
         			"nome": {
@@ -791,7 +1847,192 @@ resources:
         value: application/json
         id: pair_43887079c64e4f8daf4dbad2abab376c
     authentication: {}
-    metaSortKey: -1628625941190
+    metaSortKey: -1631728975029.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3827acac4d904e43b63978e6b0f3c6ca
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1628711986808
+    created: 1628711981579
+    name: Mapeamento
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941240
+    _type: request_group
+  - _id: req_8e559aefe4b045ecb860b765a972770f
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1631734659763
+    created: 1631734223280
+    url: https://192.168.200.10:9200/meuindice79/_mapping
+    name: Create/Update mapping
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"dynamic": "strict",
+        	"properties": {
+        		"tipo_sanguineo": {
+        			"type": "text"
+        		}
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_e0827570ebd04839945f7e061cfd6555
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: wallison
+      password: 123qwe
+    metaSortKey: -1631728975023.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d8d7142bc6894755b5f22723496fef30
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1631729185358
+    created: 1628714373713
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_mapping
+    name: listar mapeamento do indice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1631728975017
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_973eaff0d04c430bbd5c649b830b061d
+    parentId: fld_880531130fbb41e3bf0fb8f09c0bd3ac
+    modified: 1631729177433
+    created: 1628714676613
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template/meu_template
+    name: criar template
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"template": "teste",
+        	"mappings":{
+        			"dynamic_templates": [
+        				{
+        					"regra1": {
+        						"match": "nome*",
+        						"mapping": {
+        							"type": "string",
+        							"index": "anayzed"
+        						}
+        					}
+        				}
+        			]
+        		}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbd1ecf34e164f00a29887357d093a0e
+    authentication: {}
+    metaSortKey: -1630953216554
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_880531130fbb41e3bf0fb8f09c0bd3ac
+    parentId: fld_3827acac4d904e43b63978e6b0f3c6ca
+    modified: 1631729193210
+    created: 1631728974992
+    name: Template
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1631728974967
+    _type: request_group
+  - _id: req_f3cabe487544420cabf5b49dcbf22b4b
+    parentId: fld_880531130fbb41e3bf0fb8f09c0bd3ac
+    modified: 1631729261022
+    created: 1631729254215
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template/meu_template
+    name: criar template
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"template": "teste",
+        	"mappings":{
+        			"dynamic_templates": [
+        				{
+        					"regra1": {
+        						"match": "nome*",
+        						"mapping": {
+        							"type": "string",
+        							"index": "anayzed"
+        						}
+        					}
+        				}
+        			]
+        		}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_bbd1ecf34e164f00a29887357d093a0e
+    authentication: {}
+    metaSortKey: -1630953216529
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_91f17b9ac806411c9ae7d58824ae2461
+    parentId: fld_880531130fbb41e3bf0fb8f09c0bd3ac
+    modified: 1631729179376
+    created: 1628714062649
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_template
+    name: listar templates
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1630953216504
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -855,6 +2096,48 @@ resources:
         id: pair_43887079c64e4f8daf4dbad2abab376c
     authentication: {}
     metaSortKey: -1628625941183.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9222cecb45144a7690c115ff29bc6562
+    parentId: fld_c4d5ffa6911b4176ab23823b1a581787
+    modified: 1631734528593
+    created: 1631734223281
+    url: http://192.168.200.10:9200/_aliases
+    name: Create alias
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"actions": [
+        		{
+        			"add": {
+        				"index": "adega",
+        				"alias": "empresas"
+        			}
+        		},
+        		{
+        			"add": {
+        				"index": "boteco",
+        				"alias": "empresas"
+        			}
+        		}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_e0827570ebd04839945f7e061cfd6555
+    authentication: {}
+    metaSortKey: -1628625941182.9688
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
