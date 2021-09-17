@@ -8,6 +8,7 @@ services:
       - node.roles=master,data
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es01,es02
+      # - discovery.type=single-node
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -51,7 +52,7 @@ services:
     container_name: es03
     environment:
       - node.name=es03
-      - node.roles=master,data
+      - node.roles=master,data,ingest
       - cluster.name=es-docker-cluster
       - discovery.seed_hosts=es02,es01
       - cluster.initial_master_nodes=es01,es02,es03
@@ -83,20 +84,34 @@ services:
       - elastic
 
   metricbeat:
-    image: docker.elastic.co/beats/metricbeat:7.14.1
+    build:
+      context: ./metricbeat
+    environment:
+      ELASTICSEARCH_HOSTS: http://es01:9200
+      KIBANA_HOST: http://kib01:5601
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: changeme
+    volumes:
+      - metricbeat:/usr/share/metricbeat/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /proc:/hostfs/proc:ro
+      - /:/hostfs:ro
+    networks:
+      - elastic
+    depends_on:
+      - es01
+    # fontes: 
+      # - https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
+      # - https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.14.1
     environment:
       setup.kibana.host: http://kib01:5601
       output.elasticsearch.hosts: http://es01:9200
     networks:
       - elastic
-
-  # filebeat:
-  #   image: docker.elastic.co/beats/filebeat:7.14.1
-  #   environment:
-  #     setup.kibana.host: http://kib01:5601
-  #     output.elasticsearch.hosts: http://es01:9200
-  #   networks:
-  #     - elastic
 
 volumes:
   data01:
@@ -105,9 +120,16 @@ volumes:
     driver: local
   data03:
     driver: local
+  metricbeat:
+    driver: local
+
+configs:
+  mb_config:
+    file: ./metricbeat.yml
 
 networks:
   elastic:
+    # external: true
     driver: bridge
     ipam:
       driver: default
