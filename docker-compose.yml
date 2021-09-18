@@ -104,6 +104,7 @@ services:
     # fontes: 
       # - https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
       # - https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
+      # - https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
 
   filebeat:
     image: docker.elastic.co/beats/filebeat:7.14.1
