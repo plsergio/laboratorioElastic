@@ -32,3 +32,20 @@ metricbeat.modules:
   period: 10s
   hosts: ['${ELASTICSEARCH_HOSTS}']
   # hosts: ["http://es01:9200"]
+
+#============================== Dashboards =====================================
+# setup.dashboards:
+#   enabled: true
+
+#============================== Kibana =========================================
+# setup.kibana:
+#   host: "${KIBANA_HOST}"
+#   username: ${ELASTICSEARCH_USERNAME}
+#   password: ${ELASTICSEARCH_PASSWORD}
+
+#============================== Xpack Monitoring ===============================
+xpack.monitoring:
+  enabled: true
+  elasticsearch:
+
+# xpack.monitoring.collection.enabled: true

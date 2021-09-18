@@ -86,14 +86,16 @@ services:
   metricbeat:
     build:
       context: ./metricbeat
+    user: root
     environment:
       ELASTICSEARCH_HOSTS: http://es01:9200
+      output.elasticsearch.hosts: http://es01:9200
       KIBANA_HOST: http://kib01:5601
       ELASTICSEARCH_USERNAME: elastic
       ELASTICSEARCH_PASSWORD: changeme
     volumes:
-      - metricbeat:/usr/share/metricbeat/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      # - metricbeat:/usr/share/metricbeat/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
       - /proc:/hostfs/proc:ro
       - /:/hostfs:ro
@@ -107,7 +109,12 @@ services:
       # - https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
 
   filebeat:
-    image: docker.elastic.co/beats/filebeat:7.14.1
+    build:
+      context: ./filebeat
+    user: root
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       setup.kibana.host: http://kib01:5601
       output.elasticsearch.hosts: http://es01:9200
@@ -121,12 +128,12 @@ volumes:
     driver: local
   data03:
     driver: local
-  metricbeat:
-    driver: local
+  # metricbeat:
+  #   driver: local
 
-configs:
-  mb_config:
-    file: ./metricbeat.yml
+# configs:
+#   mb_config:
+#     file: ./metricbeat.yml
 
 networks:
   elastic:
