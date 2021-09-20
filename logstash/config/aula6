@@ -1,0 +1,19 @@
+input {
+  stdin { }
+}
+filter {
+  grok {
+    match => [ "message" [> "%{COMBINEDAPACHELOG}" ]
+  }
+  geoip {
+    source => "clientip"
+  }
+  useragent {
+    source => "agent"
+    target => "user-agent"
+  }
+  
+}
+output {
+  stdout { }
+}
