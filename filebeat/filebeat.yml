@@ -24,6 +24,14 @@ filebeat.modules:
     # this is probably something you would want to install. (sudo apt-get install -y auditd audispd-plugins)
     enabled: true
 
+- module: apache
+  access:
+    enabled: true
+    var.paths: ["/usr/share/filebeat/logs/*.log"]
+  error:
+    enabled: false
+    var.paths: ["/usr/share/filebeat/logs/*.log"]
+
 #========================== Elasticsearch output ===============================
 output.elasticsearch:
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
