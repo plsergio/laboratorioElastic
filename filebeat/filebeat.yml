@@ -11,7 +11,32 @@ filebeat.autodiscover:
 processors:
 - add_cloud_metadata: ~
 
+filebeat.modules:
+- module: system
+  syslog:
+    enabled: true
+  auth:
+    enabled: true
+- module: auditd
+  log:
+    # - Does not look like Auditd is supported in Alpine linux: https://github.com/linuxkit/linuxkit/issues/52
+    # - CentOS does not need us to install the audit system, it ships as standard. If you are using Ubuntu, though,
+    # this is probably something you would want to install. (sudo apt-get install -y auditd audispd-plugins)
+    enabled: true
+
+#========================== Elasticsearch output ===============================
 output.elasticsearch:
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
   # username: '${ELASTICSEARCH_USERNAME:}'
   # password: '${ELASTICSEARCH_PASSWORD:}'
+
+#============================== Kibana =========================================
+setup.kibana:
+  host: '${KIBANA_HOST}'
+  # username: ${ELASTICSEARCH_USERNAME}
+  # password: ${ELASTICSEARCH_PASSWORD}
+
+#============================== Xpack Monitoring ===============================
+xpack.monitoring:
+  enabled: true
+  elasticsearch:

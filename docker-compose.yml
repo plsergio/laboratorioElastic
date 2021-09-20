@@ -113,13 +113,17 @@ services:
       context: ./filebeat
     user: root
     volumes:
+      - filebeat:/usr/share/metricbeat/data
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       ELASTICSEARCH_HOSTS: http://es01:9200
-      setup.kibana.host: http://kib01:5601
+      KIBANA_HOST: http://kib01:5601
     networks:
       - elastic
+    depends_on:
+      - es01
+      - kib01
 
   # fonte: https://github.com/deviantony/docker-elk
   logstash:
@@ -139,8 +143,8 @@ services:
       - "5000:5000/tcp"
       - "5000:5000/udp"
       - "9600:9600"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    # environment:
+    #   LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elastic
     depends_on:
@@ -154,6 +158,8 @@ volumes:
   data03:
     driver: local
   metricbeat:
+    driver: local
+  filebeat:
     driver: local
 
 networks:
