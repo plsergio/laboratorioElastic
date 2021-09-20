@@ -116,6 +116,7 @@ services:
       - filebeat:/usr/share/metricbeat/data
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    # command: filebeat setup && filebeat modules enable apache
     environment:
       ELASTICSEARCH_HOSTS: http://es01:9200
       KIBANA_HOST: http://kib01:5601
