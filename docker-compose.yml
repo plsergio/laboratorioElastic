@@ -129,15 +129,15 @@ services:
   logstash:
     build:
       context: logstash/
-    # volumes:
-    #   - type: bind
-    #     source: ./logstash/config/
-    #     target: /usr/share/logstash/config/
-    #     read_only: true
-    #   - type: bind
-    #     source: ./logstash/pipeline
-    #     target: /usr/share/logstash/pipeline
-    #     read_only: true
+    configs:
+      - source: logstash_config
+        target: /usr/share/logstash/config/logstash.yml
+      - source: logstash_pipeline
+        target: /usr/share/logstash/pipeline/logstash.conf
+      - source: logstash_log
+        target: /usr/share/logstash/log/access.log
+    volumes:
+      - logstash:/usr/share/logstash/data  
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
@@ -147,8 +147,19 @@ services:
     #   LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elastic
+    # deploy:
+    #   mode: replicated
+    #   replicas: 1
     depends_on:
       - es01
+
+configs:
+  logstash_config:
+    file: ./logstash/config/logstash.yml
+  logstash_pipeline:
+    file: ./logstash/pipeline/logstash.conf
+  logstash_log:
+    file: ./logstash/log/access.log
 
 volumes:
   data01:
@@ -160,6 +171,8 @@ volumes:
   metricbeat:
     driver: local
   filebeat:
+    driver: local
+  logstash:
     driver: local
 
 networks:
