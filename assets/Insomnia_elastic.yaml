@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-09-16T20:32:05.292Z
+__export_date: 2021-09-21T17:59:22.465Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_d41d0966a0104b78801ea174ee0dabdf
@@ -34,9 +34,9 @@ resources:
     _type: workspace
   - _id: req_75e4ddab0e4a4bb691fcafe794f0cc02
     parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1631817802996
+    modified: 1632247121467
     created: 1631817798938
-    url: http://192.168.200.10:9200/adega/_update/12
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_update/12
     name: POST
     description: ""
     method: POST
@@ -223,15 +223,25 @@ resources:
     _type: request
   - _id: req_bec8d95060734d8695ee0f0ba0d3f323
     parentId: fld_610592a390f346ad980cdbe6474a1ed2
-    modified: 1631817645171
+    modified: 1631901996912
     created: 1631817561399
     url: http://{{ _.IP_DO_ELASTIC }}:9200/_cluster/settings
     name: cluster settings
     description: ""
     method: GET
-    body: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "persistent": {
+            "xpack.monitoring.elasticsearch.collection.enabled": true
+          }
+        }
     parameters: []
-    headers: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_120409068c8447a88d42dd21df4fd343
     authentication: {}
     metaSortKey: -1628625941340
     isPrivate: false
@@ -2452,6 +2462,163 @@ resources:
         id: pair_43887079c64e4f8daf4dbad2abab376c
     authentication: {}
     metaSortKey: -1628625941182.1875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e600cf8afd09428b992d7a188d122c6b
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246407666
+    created: 1632246151808
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node
+    name: Monitoramento
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941565
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_719a3be4c1564582a7518d819275dfb2
+    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    modified: 1632246352545
+    created: 1632246178944
+    name: Monitoramento Logstash
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941140
+    _type: request_group
+  - _id: req_889ffe25fec34d1f89032108522e3f40
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246559191
+    created: 1632246306829
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node/stats/os
+    name: /stats/os
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941552.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2fc5806fcbaf41e6925247419710802e
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246566805
+    created: 1632246328174
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node/stats/reloads
+    name: /stats/reloads
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941546.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_80ae082b200f4f169989ac09018b4b72
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246607191
+    created: 1632246596927
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node/stats/pipelines?pretty
+    name: /stats/pipelines
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941543.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_95bdbdb808524ba3a3d131a82b78017b
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246668556
+    created: 1632246660528
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node/stats/process
+    name: /stats/process
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941542.3438
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_89565862a04e460a92d2f46dc38a769a
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246642959
+    created: 1632246633756
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node/plugins
+    name: plugins
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941541.5625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0dc665966279458d8949aab3d64f6616
+    parentId: fld_719a3be4c1564582a7518d819275dfb2
+    modified: 1632246746239
+    created: 1632246742378
+    url: http://{{ _.IP_DO_ELASTIC }}:9600/_node/hot_threads
+    name: hot_threads
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941540.7812
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
