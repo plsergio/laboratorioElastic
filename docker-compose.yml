@@ -167,7 +167,6 @@ services:
       - elastic
     depends_on:
       - es01
-      - kib01
 
 configs:
   logstash_config:
