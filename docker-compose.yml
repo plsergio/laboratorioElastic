@@ -154,6 +154,20 @@ services:
     depends_on:
       - es01
 
+  # fonte: https://github.com/lmenezes/cerebro-docker
+  # ferramenta de monitoramento alternativa ao Kibana
+  cerebro:
+    image: lmenezes/cerebro
+    # environment:
+    #   CEREBRO_PORT: 8080
+    ports:
+      - 9000:9000
+    networks:
+      - elastic
+    depends_on:
+      - es01
+      - kib01
+
 configs:
   logstash_config:
     file: ./logstash/config/logstash.yml
