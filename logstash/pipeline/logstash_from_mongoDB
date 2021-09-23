@@ -1,0 +1,53 @@
+input {
+  mongodb {
+    uri => "mongodb+srv://4linux:123qwe@4linux.yv2ds.mongodb.net/sample_supplies"
+    placeholder_db_dir => "/opt/logstash-mongodb/"
+    placeholder_db_name => "logstash_sqlite.db"
+    collection => "sales"
+    batch_size => 5000
+  }
+
+# stdin { }
+
+}
+
+filter {
+  mutate {
+    gsub => [
+      "log_entry", "=>", ":",
+      "log_entry", "BSON::ObjectId", "",
+      "log_entry", "BSON::Decimal128", "",
+      "log_entry", "\(", "",
+      "log_entry", "\)", "",
+      "log_entry", '"saleDate":2', '"saleDate":"2',
+      "log_entry", 'UTC', 'UTC"',
+      "log_entry", "'", '"'
+#      "log_entry", "([\u0028\u0027\u0029])+", ""
+    ]
+  }
+
+  json {
+    source => "log_entry"
+  }
+
+  split {
+    field => "items"
+  }
+
+  mutate {
+    rename => { "_id" => "sales_id" }
+    remove_field => [ "log_entry" ]
+  }
+
+}
+
+output {
+  elasticsearch {
+    hosts => [ "http://es01:9200"" ]
+    user => "elastic"
+    password => "${ES_PWD}" #### setado via logstash-keystore
+    # template => ""
+    index => "sales-%{+YYYY.MM.dd}"
+    cacert => '/etc/logstash/ca.pem'
+  }
+}

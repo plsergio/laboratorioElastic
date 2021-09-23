@@ -1,0 +1,31 @@
+input {
+  file {
+    path => "/opt/pje/*.log"
+    start_position => "beginning"
+  }
+}
+
+filter {
+
+  grok {
+    match => { "message" => "%{TIME:hora} %{LOGLEVEL:loglevel} %{SPACE}\[%{GREEDYDATA:javaclass}\] \(%{DATA:worker}\)%{SPACE}%{GREEDYDATA:msg}"}
+  }
+
+  if ([msg] =~ "^at ") or ([msg] =~ "^Caused ") {
+     drop { }
+  }
+
+  mutate {
+    remove_field => [ "message" ]
+  }
+}
+
+output {
+
+  elasticsearch {
+    hosts => [ "http://es01:9200"]
+    # template => ""
+    index => "pje-%{+YYYY.MM.dd}"
+  }
+
+}
