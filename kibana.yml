@@ -6,12 +6,12 @@ kibana.index: ".kibana"
 elasticsearch.ssl.verificationMode: none
 elasticsearch.hosts:
   - http://es01:9200
-  - http://es02:9201
-  - http://es03:9202
+  - http://es02:9200
+  - http://es03:9200
 
-############# Com HTTPS ativada #############
+############# Com HTTPS ativado #############
 # elasticsearch.ssl.certificateAuthorities: [ "/usr/share/kibana/config/elasticsearch-ca.pem" ]
 # elasticsearch.hosts:
 #   - https://es01:9200
-#   - https://es02:9201
-#   - https://es03:9202
+#   - https://es02:9200
+#   - https://es03:9200

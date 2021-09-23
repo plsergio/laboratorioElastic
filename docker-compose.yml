@@ -31,6 +31,7 @@ services:
       - data01:/usr/share/elasticsearch/data
       - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
       - ./security/elasticsearch-ssl-http/elasticsearch/es01/http.p12:/usr/share/elasticsearch/config/http.p12
+      # Opcional - usado para criar certificados https
       - ./security/elastic-stack-ca.p12:/usr/share/elasticsearch/config/elastic-stack-ca.p12
     ports:
       - 9200:9200
@@ -118,8 +119,8 @@ services:
     environment:
       SERVER_NAME: kibana
       ELASTICSEARCH_URL: http://es01:9200
-      # ELASTICSEARCH_USERNAME: kibana_system
-      # ELASTICSEARCH_PASSWORD: VigbmmRwtckqFVEcARt2
+      ELASTICSEARCH_USERNAME: kibana_system
+      ELASTICSEARCH_PASSWORD: CtZbCApHJKkASNOleMpR
     ports:
       - 5601:5601
     networks:
@@ -129,17 +130,17 @@ services:
     build:
       context: ./metricbeat
     user: root
-    environment:
-      ELASTICSEARCH_HOSTS: http://es01:9200
-      KIBANA_HOST: http://kib01:5601
-      # ELASTICSEARCH_USERNAME: beats_system
-      # ELASTICSEARCH_PASSWORD: lC9ON9hltm2XjeQA4IuC
     volumes:
       - metricbeat:/usr/share/metricbeat/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
       - /proc:/hostfs/proc:ro
       - /:/hostfs:ro
+    environment:
+      KIBANA_HOST: http://kib01:5601
+      ELASTICSEARCH_HOSTS: http://es01:9200
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: 1xXtUZ3lt3AU3Zwmrkc2
     # command: metricbeat setup && metricbeat modules enable elasticsearch-xpack
     networks:
       - elastic
@@ -163,8 +164,8 @@ services:
     environment:
       KIBANA_HOST: http://kib01:5601
       ELASTICSEARCH_HOSTS: http://es01:9200
-      # ELASTICSEARCH_USERNAME: beats_system
-      # ELASTICSEARCH_PASSWORD: lC9ON9hltm2XjeQA4IuC
+      ELASTICSEARCH_USERNAME: beats_system
+      ELASTICSEARCH_PASSWORD: UDV6dvWKoujkQ905M9Gj
     networks:
       - elastic
     depends_on:
@@ -175,13 +176,6 @@ services:
   logstash:
     build:
       context: logstash/
-    configs:
-      - source: logstash_config
-        target: /usr/share/logstash/config/logstash.yml
-      - source: logstash_pipeline
-        target: /usr/share/logstash/pipeline/logstash.conf
-      - source: logstash_log
-        target: /usr/share/logstash/log/access.log
     volumes:
       - logstash:/usr/share/logstash/data  
     ports:
@@ -191,14 +185,38 @@ services:
       - "9600:9600"
     environment:
       ELASTICSEARCH_HOSTS: http://es01:9200
-      # ELASTICSEARCH_USERNAME: logstash_system
-      # ELASTICSEARCH_PASSWORD: PfditDIuqdM2wLTlBWca
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: 1xXtUZ3lt3AU3Zwmrkc2
     #   LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elastic
     # deploy:
     #   mode: replicated
     #   replicas: 1
+    depends_on:
+      - es01
+      - kib01
+
+  auditbeat:
+    build:
+      context: ./auditbeat
+    user: root
+    volumes:
+      - auditbeat:/usr/share/auditbeat/data
+    cap_add:
+      - AUDIT_CONTROL
+      - AUDIT_READ
+    pid: "host"
+    privileged: true
+    # command: auditbeat setup
+    environment:
+      # strict.perms: "false"
+      KIBANA_HOST: http://kib01:5601
+      ELASTICSEARCH_HOSTS: http://es01:9200
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: UDV6dvWKoujkQ905M9Gj
+    networks:
+      - elastic
     depends_on:
       - es01
       - kib01
@@ -217,14 +235,6 @@ services:
     depends_on:
       - es01
 
-configs:
-  logstash_config:
-    file: ./logstash/config/logstash.yml
-  logstash_pipeline:
-    file: ./logstash/pipeline/logstash.conf
-  logstash_log:
-    file: ./logstash/log/access.log
-
 volumes:
   data01:
     driver: local
@@ -237,6 +247,8 @@ volumes:
   filebeat:
     driver: local
   logstash:
+    driver: local
+  auditbeat:
     driver: local
 
 networks:

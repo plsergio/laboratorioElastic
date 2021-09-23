@@ -3,4 +3,4 @@ RUN rm -f /usr/share/logstash/pipeline/logstash.conf
 ADD pipeline/ /usr/share/logstash/pipeline/
 ADD config/ /usr/share/logstash/config/
 ADD drivers/ /usr/share/logstash/drivers/
-# ADD log/ /usr/share/logstash/log/
+ADD log/ /usr/share/logstash/log/

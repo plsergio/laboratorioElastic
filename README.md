@@ -1,4 +1,13 @@
 # Laboratório Elastic Stack
+Configura e sobe:
+  - 3 nós Elasticsearch, 
+  - Kibana, 
+  - Logstash, 
+  - Metricbeat, 
+  - Auditbeat (Auditoria), 
+  - Filebeat, 
+  - Cérebro (Ferramenta de monitoramento e gestão alternativa ao Kibana)
+  - Segurança pré-configurada.
 
 ### Requisitos
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -33,14 +42,16 @@
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
   - https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
 
-### Passwords
+
+### Ativar e usar senhas
 - Descomente a linha que ativa a requisição de senha dentros dos nós:
   - xpack.security.enabled=true
 - Execute o comando dentro dentro do es01
   - ``` ./bin/elasticsearch-setup-passwords auto ```
 - Copie as senhas e as altere no docker-compose.yml
+- Descomente as configurações de segurança em logstash.yml
 
-### HTTPS (Em desenvolvimento)
+### Ativar navegação por HTTPS
 - Execute o comando dentro do es01 
 ``` 
     ./bin/elasticsearch-certutil http 
