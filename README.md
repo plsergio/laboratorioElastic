@@ -34,11 +34,11 @@
   - https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
 
 ### Passwords
+- Descomente a linha que ativa a requisição de senha dentros dos nós:
+  - xpack.security.enabled=true
 - Execute o comando dentro dentro do es01
   - ``` ./bin/elasticsearch-setup-passwords auto ```
 - Copie as senhas e as altere no docker-compose.yml
-- Descomente a linha que ativa a requisição de senha dentros dos nós:
-  - xpack.security.enabled=true
 
 ### HTTPS (Em desenvolvimento)
 - Execute o comando dentro do es01 
