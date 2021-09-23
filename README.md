@@ -40,7 +40,7 @@
 - Descomente a linha que ativa a requisição de senha dentros dos nós:
   - xpack.security.enabled=true
 
-### HTTPS
+### HTTPS (Em desenvolvimento)
 - Execute o comando dentro do es01 
 ``` 
     ./bin/elasticsearch-certutil http 
@@ -53,15 +53,15 @@
     Generate a certificate per node? y
     node #1 name: es01
     Enter all the hostnames that you need, one per line. es01.example.com
-    Enter all the IP addresses that you need, one per line. http://es01
+    Enter all the IP addresses that you need, one per line. es01
     Generate additional certificates? y
     node #2 name: es02
     Enter all the hostnames that you need, one per line. es02.example.com
-    Enter all the IP addresses that you need, one per line. http://es02
+    Enter all the IP addresses that you need, one per line. es02
     Generate additional certificates? y
     node #2 name: es03
     Enter all the hostnames that you need, one per line. es02.example.com
-    Enter all the IP addresses that you need, one per line. http://es03
+    Enter all the IP addresses that you need, one per line. es03
     Generate additional certificates? n
 ```
 - Copie a pasta zipada para a pasta security localmente
