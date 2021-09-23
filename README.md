@@ -52,16 +52,16 @@
     For how long should your certificate be valid?
     Generate a certificate per node? y
     node #1 name: es01
-    Enter all the hostnames that you need, one per line. es01.example.com
-    Enter all the IP addresses that you need, one per line. es01
+    Enter all the hostnames that you need, one per line. es01
+    Enter all the IP addresses that you need, one per line. 10.104.0.4
     Generate additional certificates? y
     node #2 name: es02
-    Enter all the hostnames that you need, one per line. es02.example.com
-    Enter all the IP addresses that you need, one per line. es02
+    Enter all the hostnames that you need, one per line. es02
+    Enter all the IP addresses that you need, one per line. 10.104.0.2
     Generate additional certificates? y
     node #2 name: es03
-    Enter all the hostnames that you need, one per line. es02.example.com
-    Enter all the IP addresses that you need, one per line. es03
+    Enter all the hostnames that you need, one per line. es03
+    Enter all the IP addresses that you need, one per line. 10.104.0.5
     Generate additional certificates? n
 ```
 - Copie a pasta zipada para a pasta security localmente
@@ -72,3 +72,7 @@
 - Descomente as linhas nos nós
    - xpack.security.http.ssl.enabled=true
    - xpack.security.http.ssl.keystore.path=http.p12
+
+- Mude as urls dos nós de http para https no docker-compose.yml
+  
+- Descomentar as configurações de segurança e comentar as sem segurança no kibana.yml 
