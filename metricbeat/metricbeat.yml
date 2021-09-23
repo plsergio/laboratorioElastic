@@ -35,8 +35,8 @@ output.elasticsearch:
 #============================== Kibana =========================================
 setup.kibana:
   host: '${KIBANA_HOST}'
-  # username: ${ELASTICSEARCH_USERNAME}
-#   password: ${ELASTICSEARCH_PASSWORD}
+  username: ${ELASTICSEARCH_USERNAME:}
+  password: ${ELASTICSEARCH_PASSWORD:}
 
 # enabled modules for monitoring (e.g. elasticsearch-xpack)
 metricbeat.modules:
