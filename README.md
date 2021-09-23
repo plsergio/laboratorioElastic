@@ -49,7 +49,6 @@ Configura e sobe:
 - Execute o comando dentro dentro do es01
   - ``` ./bin/elasticsearch-setup-passwords auto ```
 - Copie as senhas e as altere no docker-compose.yml
-- Descomente as configurações de segurança em logstash.yml
 
 ### Ativar navegação por HTTPS
 - Execute o comando dentro do es01 
