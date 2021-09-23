@@ -35,14 +35,14 @@ filebeat.modules:
 #========================== Elasticsearch output ===============================
 output.elasticsearch:
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
-  # username: '${ELASTICSEARCH_USERNAME:}'
-  # password: '${ELASTICSEARCH_PASSWORD:}'
+  username: '${ELASTICSEARCH_USERNAME:}'
+  password: '${ELASTICSEARCH_PASSWORD:}'
 
 #============================== Kibana =========================================
 setup.kibana:
   host: '${KIBANA_HOST}'
-  # username: ${ELASTICSEARCH_USERNAME}
-  # password: ${ELASTICSEARCH_PASSWORD}
+  username: ${ELASTICSEARCH_USERNAME:}
+  password: ${ELASTICSEARCH_PASSWORD:}
 
 #============================== Xpack Monitoring ===============================
 xpack.monitoring:

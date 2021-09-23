@@ -12,12 +12,26 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=hot
+      ############ COMUNICAÇÃO VIA CERTIFICADO ############## 
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.client_authentication=required
+      - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
+      ################## EXIGIR SENHAS ##############
+      # - xpack.security.enabled=true
+      ################## HTTPS #####################
+      # - xpack.security.http.ssl.enabled=true
+      # - xpack.security.http.ssl.keystore.path=http.p12
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - data01:/usr/share/elasticsearch/data
+      - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
+      - ./security/elasticsearch-ssl-http/elasticsearch/es01/http.p12:/usr/share/elasticsearch/config/http.p12
+      - ./security/elastic-stack-ca.p12:/usr/share/elasticsearch/config/elastic-stack-ca.p12
     ports:
       - 9200:9200
     networks:
@@ -35,12 +49,25 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=warm
+      ############ COMUNICAÇÃO VIA CERTIFICADO ############## 
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.client_authentication=required
+      - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
+      ################## EXIGIR SENHAS ##############
+      # - xpack.security.enabled=true
+      ################## HTTPS #####################
+      # - xpack.security.http.ssl.enabled=true
+      # - xpack.security.http.ssl.keystore.path=http.p12
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - data02:/usr/share/elasticsearch/data
+      - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
+      - ./security/elasticsearch-ssl-http/elasticsearch/es02/http.p12:/usr/share/elasticsearch/config/http.p12
     ports:
       - 9201:9200
     networks:
@@ -58,12 +85,25 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=warm
+      ############ COMUNICAÇÃO VIA CERTIFICADO ############## 
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.client_authentication=required
+      - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
+      ################## EXIGIR SENHAS ##############
+      # - xpack.security.enabled=true
+      ################## HTTPS #####################
+      # - xpack.security.http.ssl.enabled=true
+      # - xpack.security.http.ssl.keystore.path=http.p12
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
       - data03:/usr/share/elasticsearch/data
+      - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
+      - ./security/elasticsearch-ssl-http/elasticsearch/es03/http.p12:/usr/share/elasticsearch/config/http.p12
     ports:
       - 9202:9200
     networks:
@@ -74,9 +114,12 @@ services:
     container_name: kibana
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./security/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem:/usr/share/kibana/config/elasticsearch-ca.pem
     environment:
       SERVER_NAME: kibana
       ELASTICSEARCH_URL: http://es01:9200
+      # ELASTICSEARCH_USERNAME: kibana_system
+      # ELASTICSEARCH_PASSWORD: VigbmmRwtckqFVEcARt2
     ports:
       - 5601:5601
     networks:
@@ -89,8 +132,8 @@ services:
     environment:
       ELASTICSEARCH_HOSTS: http://es01:9200
       KIBANA_HOST: http://kib01:5601
-      ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: changeme
+      # ELASTICSEARCH_USERNAME: beats_system
+      # ELASTICSEARCH_PASSWORD: lC9ON9hltm2XjeQA4IuC
     volumes:
       - metricbeat:/usr/share/metricbeat/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -118,8 +161,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     # command: filebeat setup && filebeat modules enable apache
     environment:
-      ELASTICSEARCH_HOSTS: http://es01:9200
       KIBANA_HOST: http://kib01:5601
+      ELASTICSEARCH_HOSTS: http://es01:9200
+      # ELASTICSEARCH_USERNAME: beats_system
+      # ELASTICSEARCH_PASSWORD: lC9ON9hltm2XjeQA4IuC
     networks:
       - elastic
     depends_on:
@@ -144,7 +189,10 @@ services:
       - "5000:5000/tcp"
       - "5000:5000/udp"
       - "9600:9600"
-    # environment:
+    environment:
+      ELASTICSEARCH_HOSTS: http://es01:9200
+      # ELASTICSEARCH_USERNAME: logstash_system
+      # ELASTICSEARCH_PASSWORD: PfditDIuqdM2wLTlBWca
     #   LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elastic
@@ -153,6 +201,7 @@ services:
     #   replicas: 1
     depends_on:
       - es01
+      - kib01
 
   # fonte: https://github.com/lmenezes/cerebro-docker
   # ferramenta de monitoramento alternativa ao Kibana

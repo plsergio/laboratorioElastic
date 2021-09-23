@@ -29,8 +29,8 @@ processors:
 #============================== Elasticsearch =========================================
 output.elasticsearch:
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
-  # username: '${ELASTICSEARCH_USERNAME:}'
-  # password: '${ELASTICSEARCH_PASSWORD:}'
+  username: '${ELASTICSEARCH_USERNAME:}'
+  password: '${ELASTICSEARCH_PASSWORD:}'
 
 #============================== Kibana =========================================
 setup.kibana:
@@ -84,8 +84,8 @@ metricbeat.modules:
     #- ml_job
   period: 10s
   hosts: ['${ELASTICSEARCH_HOSTS}']
-  #username: "elastic"
-  #password: "changeme"
+  username: '${ELASTICSEARCH_USERNAME:}'
+  password: '${ELASTICSEARCH_PASSWORD:}'
   xpack.enabled: true
   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
 

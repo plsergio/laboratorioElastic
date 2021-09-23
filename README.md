@@ -32,3 +32,43 @@
 - Documentação de referência:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
   - https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
+
+### Passwords
+- Execute o comando dentro dentro do es01
+  - ``` ./bin/elasticsearch-setup-passwords auto ```
+- Copie as senhas e as altere no docker-compose.yml
+- Descomente a linha que ativa a requisição de senha dentros dos nós:
+  - xpack.security.enabled=true
+
+### HTTPS
+- Execute o comando dentro do es01 
+``` 
+    ./bin/elasticsearch-certutil http 
+
+
+    Generate a CSR? n
+    Use an existing CA? y
+    CA Path: /usr/share/elasticsearch/config/elastic-stack-ca.p12
+    For how long should your certificate be valid?
+    Generate a certificate per node? y
+    node #1 name: es01
+    Enter all the hostnames that you need, one per line. es01.example.com
+    Enter all the IP addresses that you need, one per line. http://es01
+    Generate additional certificates? y
+    node #2 name: es02
+    Enter all the hostnames that you need, one per line. es02.example.com
+    Enter all the IP addresses that you need, one per line. http://es02
+    Generate additional certificates? y
+    node #2 name: es03
+    Enter all the hostnames that you need, one per line. es02.example.com
+    Enter all the IP addresses that you need, one per line. http://es03
+    Generate additional certificates? n
+```
+- Copie a pasta zipada para a pasta security localmente
+  - ``` docker cp es01://usr/share/elasticsearch/elasticsearch-ssl-http.zip ./security```
+
+- Descompacte o arquivo zipado na pasta security
+
+- Descomente as linhas nos nós
+   - xpack.security.http.ssl.enabled=true
+   - xpack.security.http.ssl.keystore.path=http.p12
