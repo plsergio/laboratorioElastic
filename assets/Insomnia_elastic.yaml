@@ -1,122 +1,8 @@
 _type: export
 __export_format: 4
-__export_date: 2021-09-21T17:59:22.465Z
+__export_date: 2021-09-23T18:12:02.728Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
-  - _id: req_d41d0966a0104b78801ea174ee0dabdf
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1631817820212
-    created: 1631817817086
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index/_search
-    name: GET
-    description: ""
-    method: GET
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941590
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    parentId: null
-    modified: 1628625866217
-    created: 1628625866217
-    name: Insomnia
-    description: ""
-    scope: design
-    _type: workspace
-  - _id: req_75e4ddab0e4a4bb691fcafe794f0cc02
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1632247121467
-    created: 1631817798938
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/adega/_update/12
-    name: POST
-    description: ""
-    method: POST
-    body:
-      mimeType: ""
-      text: |-
-        {
-        	"doc" : {
-        		"valor": "75,50"
-        	}
-        }
-    parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_72abf9d30deb4a0b876a8709cbf392fb
-    authentication: {}
-    metaSortKey: -1628625941540
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_0102efbb031946588f5158fca094e9e9
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1631823509163
-    created: 1631817735653
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/aula5
-    name: PUT
-    description: ""
-    method: PUT
-    body:
-      mimeType: application/json
-      text: |-
-        {
-          "aliases": {
-            "test-alias":{
-              "is_write_index": true 
-            }
-          }
-        } 
-    parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_1268b6213a33437286024237b93a8903
-    authentication: {}
-    metaSortKey: -1628625941490
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
-  - _id: req_9bc754a996d848ccb0ecd96199055334
-    parentId: wrk_cc428fbeb18d4846b71a80c9aca8c932
-    modified: 1631817787990
-    created: 1631817780491
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/novo_index
-    name: DEL
-    description: ""
-    method: DELETE
-    body: {}
-    parameters: []
-    headers: []
-    authentication: {}
-    metaSortKey: -1628625941456.4062
-    isPrivate: false
-    settingStoreCookies: true
-    settingSendCookies: true
-    settingDisableRenderRequestBody: false
-    settingEncodeUrl: true
-    settingRebuildPath: true
-    settingFollowRedirects: global
-    _type: request
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
     parentId: fld_3afe77f627c8423ab92c09fde9e7e79f
     modified: 1631817767630
@@ -148,6 +34,14 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1628625941422.8125
     _type: request_group
+  - _id: wrk_cc428fbeb18d4846b71a80c9aca8c932
+    parentId: null
+    modified: 1628625866217
+    created: 1628625866217
+    name: Insomnia
+    description: ""
+    scope: design
+    _type: workspace
   - _id: req_1a53ee15503e4646af96616db9c696af
     parentId: fld_3afe77f627c8423ab92c09fde9e7e79f
     modified: 1631817765913
@@ -161,6 +55,74 @@ resources:
     headers: []
     authentication: {}
     metaSortKey: -1628625941490
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e65729d380b44c20afc63b1a0cf9b5be
+    parentId: fld_3afe77f627c8423ab92c09fde9e7e79f
+    modified: 1632332762879
+    created: 1632332728829
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/segments
+    name: segments
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941482.1875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cd60273ce1b2413bae77be9489d8ef90
+    parentId: fld_3afe77f627c8423ab92c09fde9e7e79f
+    modified: 1632332041570
+    created: 1632332037501
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_tasks
+    name: listar tasks
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941474.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fa57768a79d74f7fa9c54a2f6a2ab605
+    parentId: fld_3afe77f627c8423ab92c09fde9e7e79f
+    modified: 1632420129230
+    created: 1632340051222
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_security/_authenticate?pretty
+    name: security
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: elastic
+      password: 1xXtUZ3lt3AU3Zwmrkc2
+    metaSortKey: -1628625941466.5625
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -200,6 +162,69 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1628625941355.625
     _type: request_group
+  - _id: req_ad1b55717ff541a2b6c51cd546da023d
+    parentId: fld_610592a390f346ad980cdbe6474a1ed2
+    modified: 1632331456828
+    created: 1632331163596
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cluster/health/indice?level=shards
+    name: cluster health indice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941361.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_08cc473008394767aa1131755ada13bc
+    parentId: fld_610592a390f346ad980cdbe6474a1ed2
+    modified: 1632331504173
+    created: 1632331465518
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cluster/stats/nodes/es01
+    name: cluster  stats do nó
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941360.3125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4a742e2b03f8489d8534d315fe517950
+    parentId: fld_610592a390f346ad980cdbe6474a1ed2
+    modified: 1632330915013
+    created: 1632330826146
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cluster/health/es01
+    name: cluster health no
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941358.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_1a06d07fb37c4024bd05da3236090a40
     parentId: fld_610592a390f346ad980cdbe6474a1ed2
     modified: 1631817647199
@@ -244,6 +269,27 @@ resources:
         id: pair_120409068c8447a88d42dd21df4fd343
     authentication: {}
     metaSortKey: -1628625941340
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_489fc1e8c9d14e7090452f37d53d40e5
+    parentId: fld_610592a390f346ad980cdbe6474a1ed2
+    modified: 1632331804731
+    created: 1632331762510
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cluster/settings?include_defaults=true
+    name: cluster settings include_degaults
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941288.4375
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -304,6 +350,58 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_b1f4be7fb3244d04bb0cc8f41f809eb4
+    parentId: fld_5ccfcbd8e45b487d9973362c7208f13c
+    modified: 1632332236483
+    created: 1628790488281
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/nodes?v
+    name: listar nodes
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941508.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_5ccfcbd8e45b487d9973362c7208f13c
+    parentId: fld_610592a390f346ad980cdbe6474a1ed2
+    modified: 1631817621996
+    created: 1631737394296
+    name: nodes
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1628625941165
+    _type: request_group
+  - _id: req_c1d9d042be9546458c2709b739937342
+    parentId: fld_5ccfcbd8e45b487d9973362c7208f13c
+    modified: 1632332492190
+    created: 1632332436843
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/nodes?h=ip,port,heapPercent,name
+    name: nodes com filtro
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941499.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_bf43778fb180432ab15b4012ce4ba6c7
     parentId: fld_5ccfcbd8e45b487d9973362c7208f13c
     modified: 1631737401896
@@ -325,29 +423,19 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: fld_5ccfcbd8e45b487d9973362c7208f13c
-    parentId: fld_610592a390f346ad980cdbe6474a1ed2
-    modified: 1631817621996
-    created: 1631737394296
-    name: nodes
-    description: ""
-    environment: {}
-    environmentPropertyOrder: null
-    metaSortKey: -1628625941165
-    _type: request_group
-  - _id: req_b1f4be7fb3244d04bb0cc8f41f809eb4
+  - _id: req_77a4f82e4a5e42c0a5e3e6ae4187c1d3
     parentId: fld_5ccfcbd8e45b487d9973362c7208f13c
-    modified: 1631737399704
-    created: 1628790488281
-    url: http://{{ _.IP_DO_ELASTIC }}:9200/_cat/nodes?v
-    name: listar nodes
+    modified: 1632331991351
+    created: 1632331985661
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/_nodes/usage
+    name: listar nodes usage
     description: ""
     method: GET
     body: {}
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1628625941408.75
+    metaSortKey: -1628625941457.5781
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -528,6 +616,69 @@ resources:
     headers: []
     authentication: {}
     metaSortKey: -1628625941246.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0bedf06023ce4aba90b7d50c01997b0d
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1632333166029
+    created: 1632333112841
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/aula5/_stats
+    name: stats
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941240
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bd89fb91eefd438f8144637777ac8a4c
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1632332909278
+    created: 1632332888330
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/indices/_close
+    name: fechar indice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941224.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_faf13486865d44608898366cb9896cb6
+    parentId: fld_c1b800c0496647de9f88a1a519959bcb
+    modified: 1632332928901
+    created: 1632332923569
+    url: http://{{ _.IP_DO_ELASTIC }}:9200/indices/_open
+    name: abrir indice
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1628625941219.6875
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
