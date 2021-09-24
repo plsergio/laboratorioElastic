@@ -15,7 +15,7 @@ Recursos disponíveis:
   - ` sudo sysctl -w vm.max_map_count=262144 `
 
 ### Subir o Cluster:
-- ` docker-compose up `
+- ` docker-compose up --build`
 
 ### Urls
 - master: http://localhost:9200/
@@ -80,13 +80,13 @@ Recursos disponíveis:
 - Mude as urls dos nós de http para https no docker-compose.yml  
 - Comentar a linha SSL_VERIFICATION_MODE em kib01 no docker-compose.yml 
 - Colocar https no output do logstash.conf.
+
 ### Documentação de referência
-- Query Strings:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html?baymax=rec&rogue=pop-1&elektra=guide
-  - https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
-  - https://github.com/deviantony/docker-elk
-  - https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
-  - https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
-  - https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
-  - https://github.com/lmenezes/cerebro-docker
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html?baymax=rec&rogue=pop-1&elektra=guide
+- https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
+- https://github.com/deviantony/docker-elk
+- https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
+- https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
+- https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
+- https://github.com/lmenezes/cerebro-docker
