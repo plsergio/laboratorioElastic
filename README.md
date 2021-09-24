@@ -51,7 +51,8 @@ Configura e sobe:
 - Copie as senhas e as altere no docker-compose.yml
 - Colocar a senha no output do logstash.conf.
 
-### Ativar navegação por HTTPS (Auto Autenticado)
+### Ativar navegação por HTTPS 
+- **OBS: O certificado auto assinado não funciona em todos os containers.**
 - Execute o comando dentro do es01 
 ``` 
     ./bin/elasticsearch-certutil http 
