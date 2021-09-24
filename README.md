@@ -1,13 +1,13 @@
 # Laboratório Elastic Stack
 Cluster com as configurações básicas e segurança já pré-configurada para esse laboratório. 
 Recursos disponíveis:
-  - 3 nós Elasticsearch, 
+  - Elasticsearch, 
   - Kibana, 
   - Logstash, 
   - Metricbeat, 
   - Auditbeat (Auditoria), 
   - Filebeat, 
-  - Cérebro (Ferramenta de monitoramento e gestão alternativa ao Kibana)
+  - Cérebro (Ferramenta de monitoramento e gestão, alternativa ao Kibana)
 
 ### Requisitos
 - [Docker Compose](https://docs.docker.com/compose/install/)
