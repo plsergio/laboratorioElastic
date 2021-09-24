@@ -1,5 +1,5 @@
 # Laboratório Elastic Stack
-Cluster com as configurações básicas e seguranças já pré-configuradas para esse laboratório. 
+Cluster com as configurações básicas e segurança já pré-configurada para esse laboratório. 
 Recursos disponíveis:
   - 3 nós Elasticsearch, 
   - Kibana, 
