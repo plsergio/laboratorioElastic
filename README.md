@@ -1,5 +1,6 @@
 # Laboratório Elastic Stack
-Configura e sobe:
+Cluster com as configurações básicas e seguranças já pré-configuradas para esse laboratório. 
+Recursos disponíveis:
   - 3 nós Elasticsearch, 
   - Kibana, 
   - Logstash, 
@@ -7,21 +8,21 @@ Configura e sobe:
   - Auditbeat (Auditoria), 
   - Filebeat, 
   - Cérebro (Ferramenta de monitoramento e gestão alternativa ao Kibana)
-  - Segurança pré-configurada.
 
 ### Requisitos
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - Set vm.max_map_count to at least 262144:
   - ` sudo sysctl -w vm.max_map_count=262144 `
 
-### Rode docker-compose para subir o Cluster:
+### Subir o Cluster:
 - ` docker-compose up `
 
 ### Urls
 - master: http://localhost:9200/
 - kibana: http://localhost:5601/
+- cerebro: http://localhost:9000/
 
-### Consultas configuradas no Insomnia
+### Consultas pré-configuradas no Insomnia
 - Instalar o [Insomnia](https://insomnia.rest/download).
 - importar o arquivo [Insomnia_elastic.yaml](assets/Insomnia_elastic.yaml).
 ![](assets/insomnia.png)
@@ -34,16 +35,7 @@ Configura e sobe:
   - [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
   - [Elasticsearch for VSCode](https://marketplace.visualstudio.com/items?itemName=ria.elastic)
 
-### Documentação
-- Query Strings:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html?baymax=rec&rogue=pop-1&elektra=guide
-
-- Documentação de referência:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-  - https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
-
-
-### Ativar e usar senhas
+### Ativar Passwords
 - Descomente a linha que ativa a requisição de senha dentros dos nós:
   - xpack.security.enabled=true
 - Execute o comando dentro dentro do es01
@@ -51,7 +43,7 @@ Configura e sobe:
 - Copie as senhas e as altere no docker-compose.yml
 - Colocar a senha no output do logstash.conf.
 
-### Ativar navegação por HTTPS 
+### Ativar HTTPS 
 - **OBS: O certificado auto assinado não funciona em todos os containers.**
 - Execute o comando dentro do es01 
 ``` 
@@ -88,3 +80,13 @@ Configura e sobe:
 - Mude as urls dos nós de http para https no docker-compose.yml  
 - Comentar a linha SSL_VERIFICATION_MODE em kib01 no docker-compose.yml 
 - Colocar https no output do logstash.conf.
+### Documentação de referência
+- Query Strings:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html?baymax=rec&rogue=pop-1&elektra=guide
+  - https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
+  - https://github.com/deviantony/docker-elk
+  - https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
+  - https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
+  - https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
+  - https://github.com/lmenezes/cerebro-docker

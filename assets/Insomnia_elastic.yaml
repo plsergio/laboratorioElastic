@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-09-23T18:12:02.728Z
+__export_date: 2021-09-24T18:51:36.502Z
 __export_source: insomnia.desktop.app:v2021.4.1
 resources:
   - _id: req_1b7d0d20e0a34baea201d4cf666ba201
@@ -107,7 +107,7 @@ resources:
     _type: request
   - _id: req_fa57768a79d74f7fa9c54a2f6a2ab605
     parentId: fld_3afe77f627c8423ab92c09fde9e7e79f
-    modified: 1632420129230
+    modified: 1632426712449
     created: 1632340051222
     url: http://{{ _.IP_DO_ELASTIC }}:9200/_security/_authenticate?pretty
     name: security
