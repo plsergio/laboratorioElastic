@@ -49,8 +49,9 @@ Configura e sobe:
 - Execute o comando dentro dentro do es01
   - ``` ./bin/elasticsearch-setup-passwords auto ```  ou ``` ./bin/elasticsearch-setup-passwords interactive ```
 - Copie as senhas e as altere no docker-compose.yml
+- Colocar a senha no output do logstash.conf.
 
-### Ativar navegação por HTTPS
+### Ativar navegação por HTTPS (Auto Autenticado)
 - Execute o comando dentro do es01 
 ``` 
     ./bin/elasticsearch-certutil http 
@@ -83,6 +84,6 @@ Configura e sobe:
    - xpack.security.http.ssl.enabled=true
    - xpack.security.http.ssl.keystore.path=http.p12
 
-- Mude as urls dos nós de http para https no docker-compose.yml
-  
-- Descomentar as configurações de segurança e comentar as sem segurança no kibana.yml 
+- Mude as urls dos nós de http para https no docker-compose.yml  
+- Comentar a linha SSL_VERIFICATION_MODE em kib01 no docker-compose.yml 
+- Colocar https no output do logstash.conf.

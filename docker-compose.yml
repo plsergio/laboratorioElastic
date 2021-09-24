@@ -111,14 +111,16 @@ services:
       - elastic
 
   kib01:
-    image: docker.elastic.co/kibana/kibana:7.14.0
-    container_name: kibana
+    build:
+      context: ./
+      dockerfile: kibana/Dockerfile
     volumes:
-      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
-      - ./security/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem:/usr/share/kibana/config/elasticsearch-ca.pem
+      - kibana:/usr/share/kibana/data
     environment:
       SERVER_NAME: kibana
-      ELASTICSEARCH_URL: http://es01:9200
+      SSL_VERIFICATION_MODE: none 
+      SSL_CERTIFICATE_AUTHORITIES: /usr/share/kibana/config/elasticsearch-ca.pem
+      ELASTICSEARCH_HOSTS: http://es01:9200
       ELASTICSEARCH_USERNAME: kibana_system
       ELASTICSEARCH_PASSWORD: ZryCfJDCOuojciP5k5vb
     ports:
@@ -241,6 +243,8 @@ volumes:
   data02:
     driver: local
   data03:
+    driver: local
+  kibana:
     driver: local
   metricbeat:
     driver: local
