@@ -120,7 +120,7 @@ services:
       SERVER_NAME: kibana
       ELASTICSEARCH_URL: http://es01:9200
       ELASTICSEARCH_USERNAME: kibana_system
-      ELASTICSEARCH_PASSWORD: CtZbCApHJKkASNOleMpR
+      ELASTICSEARCH_PASSWORD: ZryCfJDCOuojciP5k5vb
     ports:
       - 5601:5601
     networks:
@@ -140,7 +140,7 @@ services:
       KIBANA_HOST: http://kib01:5601
       ELASTICSEARCH_HOSTS: http://es01:9200
       ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: 1xXtUZ3lt3AU3Zwmrkc2
+      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
     # command: metricbeat setup && metricbeat modules enable elasticsearch-xpack
     networks:
       - elastic
@@ -164,8 +164,8 @@ services:
     environment:
       KIBANA_HOST: http://kib01:5601
       ELASTICSEARCH_HOSTS: http://es01:9200
-      ELASTICSEARCH_USERNAME: beats_system
-      ELASTICSEARCH_PASSWORD: UDV6dvWKoujkQ905M9Gj
+      ELASTICSEARCH_USERNAME: elastic
+      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
     networks:
       - elastic
     depends_on:
@@ -186,7 +186,7 @@ services:
     environment:
       ELASTICSEARCH_HOSTS: http://es01:9200
       ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: 1xXtUZ3lt3AU3Zwmrkc2
+      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
     #   LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elastic
@@ -214,7 +214,7 @@ services:
       KIBANA_HOST: http://kib01:5601
       ELASTICSEARCH_HOSTS: http://es01:9200
       ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: UDV6dvWKoujkQ905M9Gj
+      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
     networks:
       - elastic
     depends_on:

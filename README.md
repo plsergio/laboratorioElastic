@@ -47,7 +47,7 @@ Configura e sobe:
 - Descomente a linha que ativa a requisição de senha dentros dos nós:
   - xpack.security.enabled=true
 - Execute o comando dentro dentro do es01
-  - ``` ./bin/elasticsearch-setup-passwords auto ```
+  - ``` ./bin/elasticsearch-setup-passwords auto ```  ou ``` ./bin/elasticsearch-setup-passwords interactive ```
 - Copie as senhas e as altere no docker-compose.yml
 
 ### Ativar navegação por HTTPS
