@@ -12,7 +12,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=hot
-      ############ COMUNICAÇÃO VIA CERTIFICADO ############## 
+      ############ COMUNICAÇÃO VIA SSL ############## 
       - xpack.security.transport.ssl.enabled=true
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.security.transport.ssl.client_authentication=required
@@ -50,7 +50,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=warm
-      ############ COMUNICAÇÃO VIA CERTIFICADO ############## 
+      ############ COMUNICAÇÃO VIA SSL ############## 
       - xpack.security.transport.ssl.enabled=true
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.security.transport.ssl.client_authentication=required
@@ -86,7 +86,7 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=warm
-      ############ COMUNICAÇÃO VIA CERTIFICADO ############## 
+      ############ COMUNICAÇÃO VIA SSL ############## 
       - xpack.security.transport.ssl.enabled=true
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.security.transport.ssl.client_authentication=required
