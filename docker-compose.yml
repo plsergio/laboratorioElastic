@@ -192,6 +192,8 @@ services:
       ELASTICSEARCH_HOSTS: http://es01:9200
       ELASTICSEARCH_USERNAME: elastic
       ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
+      BANCO_USUARIO: DWCNJ_APP
+      BANCO_SENHA: bdQwHaXRYM
     #   LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elastic
