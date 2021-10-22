@@ -7,8 +7,11 @@ services:
       - node.name=es01
       - node.roles=master,data
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02
-      - cluster.initial_master_nodes=es01,es02,es03
+      - discovery.seed_hosts=es01
+      # - discovery.seed_hosts=es01,es02
+      # - discovery.type= single-node
+      - cluster.initial_master_nodes=es01
+      # - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.attr.box_type=hot
@@ -38,77 +41,77 @@ services:
     networks:
       - elastic
 
-  es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-    container_name: es02
-    environment:
-      - node.name=es02
-      - node.roles=master,data
-      - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es03
-      - cluster.initial_master_nodes=es01,es02,es03
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - node.attr.box_type=warm
-      ############ COMUNICAÇÃO VIA SSL ############## 
-      - xpack.security.transport.ssl.enabled=true
-      - xpack.security.transport.ssl.verification_mode=certificate
-      - xpack.security.transport.ssl.client_authentication=required
-      - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
-      - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
-      ################## EXIGIR SENHAS ##############
-      # - xpack.security.enabled=true
-      ################## HTTPS #####################
-      # - xpack.security.http.ssl.enabled=true
-      # - xpack.security.http.ssl.keystore.path=http.p12
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data02:/usr/share/elasticsearch/data
-      - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
-      - ./security/elasticsearch-ssl-http/elasticsearch/es02/http.p12:/usr/share/elasticsearch/config/http.p12
-    ports:
-      - 9201:9200
-    networks:
-      - elastic
+  # es02:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+  #   container_name: es02
+  #   environment:
+  #     - node.name=es02
+  #     - node.roles=master,data
+  #     - cluster.name=es-docker-cluster
+  #     - discovery.seed_hosts=es01,es03
+  #     - cluster.initial_master_nodes=es01,es02,es03
+  #     - bootstrap.memory_lock=true
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #     - node.attr.box_type=warm
+  #     ############ COMUNICAÇÃO VIA SSL ############## 
+  #     - xpack.security.transport.ssl.enabled=true
+  #     - xpack.security.transport.ssl.verification_mode=certificate
+  #     - xpack.security.transport.ssl.client_authentication=required
+  #     - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
+  #     - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
+  #     ################## EXIGIR SENHAS ##############
+  #     # - xpack.security.enabled=true
+  #     ################## HTTPS #####################
+  #     # - xpack.security.http.ssl.enabled=true
+  #     # - xpack.security.http.ssl.keystore.path=http.p12
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   volumes:
+  #     - data02:/usr/share/elasticsearch/data
+  #     - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
+  #     - ./security/elasticsearch-ssl-http/elasticsearch/es02/http.p12:/usr/share/elasticsearch/config/http.p12
+  #   ports:
+  #     - 9201:9200
+  #   networks:
+  #     - elastic
 
-  es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
-    container_name: es03
-    environment:
-      - node.name=es03
-      - node.roles=master,data,ingest
-      - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es02,es01
-      - cluster.initial_master_nodes=es01,es02,es03
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - node.attr.box_type=warm
-      ############ COMUNICAÇÃO VIA SSL ############## 
-      - xpack.security.transport.ssl.enabled=true
-      - xpack.security.transport.ssl.verification_mode=certificate
-      - xpack.security.transport.ssl.client_authentication=required
-      - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
-      - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
-      ################## EXIGIR SENHAS ##############
-      # - xpack.security.enabled=true
-      ################## HTTPS #####################
-      # - xpack.security.http.ssl.enabled=true
-      # - xpack.security.http.ssl.keystore.path=http.p12
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - data03:/usr/share/elasticsearch/data
-      - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
-      - ./security/elasticsearch-ssl-http/elasticsearch/es03/http.p12:/usr/share/elasticsearch/config/http.p12
-    ports:
-      - 9202:9200
-    networks:
-      - elastic
+  # es03:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+  #   container_name: es03
+  #   environment:
+  #     - node.name=es03
+  #     - node.roles=master,data,ingest
+  #     - cluster.name=es-docker-cluster
+  #     - discovery.seed_hosts=es02,es01
+  #     - cluster.initial_master_nodes=es01,es02,es03
+  #     - bootstrap.memory_lock=true
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #     - node.attr.box_type=warm
+  #     ############ COMUNICAÇÃO VIA SSL ############## 
+  #     - xpack.security.transport.ssl.enabled=true
+  #     - xpack.security.transport.ssl.verification_mode=certificate
+  #     - xpack.security.transport.ssl.client_authentication=required
+  #     - xpack.security.transport.ssl.keystore.path=elastic-certificates.p12
+  #     - xpack.security.transport.ssl.truststore.path=elastic-certificates.p12
+  #     ################## EXIGIR SENHAS ##############
+  #     # - xpack.security.enabled=true
+  #     ################## HTTPS #####################
+  #     # - xpack.security.http.ssl.enabled=true
+  #     # - xpack.security.http.ssl.keystore.path=http.p12
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   volumes:
+  #     - data03:/usr/share/elasticsearch/data
+  #     - ./security/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
+  #     - ./security/elasticsearch-ssl-http/elasticsearch/es03/http.p12:/usr/share/elasticsearch/config/http.p12
+  #   ports:
+  #     - 9202:9200
+  #   networks:
+  #     - elastic
 
   kib01:
     build:
@@ -128,51 +131,51 @@ services:
     networks:
       - elastic
 
-  metricbeat:
-    build:
-      context: ./metricbeat
-    user: root
-    volumes:
-      - metricbeat:/usr/share/metricbeat/data
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
-      - /proc:/hostfs/proc:ro
-      - /:/hostfs:ro
-    environment:
-      KIBANA_HOST: http://kib01:5601
-      ELASTICSEARCH_HOSTS: http://es01:9200
-      ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
-    # command: metricbeat setup && metricbeat modules enable elasticsearch-xpack
-    networks:
-      - elastic
-    depends_on:
-      - es01
-      - kib01
-    # fontes: 
-      # - https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
-      # - https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
-      # - https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
+  # metricbeat:
+  #   build:
+  #     context: ./metricbeat
+  #   user: root
+  #   volumes:
+  #     - metricbeat:/usr/share/metricbeat/data
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+  #     - /proc:/hostfs/proc:ro
+  #     - /:/hostfs:ro
+  #   environment:
+  #     KIBANA_HOST: http://kib01:5601
+  #     ELASTICSEARCH_HOSTS: http://es01:9200
+  #     ELASTICSEARCH_USERNAME: elastic
+  #     ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
+  #   # command: metricbeat setup && metricbeat modules enable elasticsearch-xpack
+  #   networks:
+  #     - elastic
+  #   depends_on:
+  #     - es01
+  #     - kib01
+  #   # fontes: 
+  #     # - https://quoeamaster.medium.com/deploying-metricbeat-side-by-side-with-elasticsearch-in-docker-42c769d95be
+  #     # - https://github.com/shazChaudhry/docker-elastic/blob/master/metricbeat-docker-compose.yml
+  #     # - https://www.elastic.co/guide/en/beats/metricbeat/7.14/running-on-docker.html
 
-  filebeat:
-    build:
-      context: ./filebeat
-    user: root
-    volumes:
-      - filebeat:/usr/share/metricbeat/data
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    # command: filebeat setup && filebeat modules enable apache
-    environment:
-      KIBANA_HOST: http://kib01:5601
-      ELASTICSEARCH_HOSTS: http://es01:9200
-      ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
-    networks:
-      - elastic
-    depends_on:
-      - es01
-      - kib01
+  # filebeat:
+  #   build:
+  #     context: ./filebeat
+  #   user: root
+  #   volumes:
+  #     - filebeat:/usr/share/metricbeat/data
+  #     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #   # command: filebeat setup && filebeat modules enable apache
+  #   environment:
+  #     KIBANA_HOST: http://kib01:5601
+  #     ELASTICSEARCH_HOSTS: http://es01:9200
+  #     ELASTICSEARCH_USERNAME: elastic
+  #     ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
+  #   networks:
+  #     - elastic
+  #   depends_on:
+  #     - es01
+  #     - kib01
 
   # fonte: https://github.com/deviantony/docker-elk
   logstash:
@@ -199,43 +202,43 @@ services:
       - es01
       - kib01
 
-  auditbeat:
-    build:
-      context: ./auditbeat
-    user: root
-    volumes:
-      - auditbeat:/usr/share/auditbeat/data
-    cap_add:
-      - AUDIT_CONTROL
-      - AUDIT_READ
-    pid: "host"
-    privileged: true
-    # command: auditbeat setup
-    environment:
-      # strict.perms: "false"
-      KIBANA_HOST: http://kib01:5601
-      ELASTICSEARCH_HOSTS: http://es01:9200
-      ELASTICSEARCH_USERNAME: elastic
-      ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
-    networks:
-      - elastic
-    depends_on:
-      - es01
-      - kib01
+  # auditbeat:
+  #   build:
+  #     context: ./auditbeat
+  #   user: root
+  #   volumes:
+  #     - auditbeat:/usr/share/auditbeat/data
+  #   cap_add:
+  #     - AUDIT_CONTROL
+  #     - AUDIT_READ
+  #   pid: "host"
+  #   privileged: true
+  #   # command: auditbeat setup
+  #   environment:
+  #     # strict.perms: "false"
+  #     KIBANA_HOST: http://kib01:5601
+  #     ELASTICSEARCH_HOSTS: http://es01:9200
+  #     ELASTICSEARCH_USERNAME: elastic
+  #     ELASTICSEARCH_PASSWORD: dN3OwJZmGDj752imJA6e
+  #   networks:
+  #     - elastic
+  #   depends_on:
+  #     - es01
+  #     - kib01
 
   # fonte: https://github.com/lmenezes/cerebro-docker
   # ferramenta de monitoramento alternativa ao Kibana
   # conectar em http://es01:9200
-  cerebro:
-    image: lmenezes/cerebro
-    # environment:
-    #   CEREBRO_PORT: 8080
-    ports:
-      - 9000:9000
-    networks:
-      - elastic
-    depends_on:
-      - es01
+  # cerebro:
+  #   image: lmenezes/cerebro
+  #   # environment:
+  #   #   CEREBRO_PORT: 8080
+  #   ports:
+  #     - 9000:9000
+  #   networks:
+  #     - elastic
+  #   depends_on:
+  #     - es01
 
 volumes:
   data01:
